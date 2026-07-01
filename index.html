@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -848,7 +848,7 @@
     <div class="section" id="s3">
       <h2 class="sec">3. Справочники (чтение)</h2>
       <p>Справочники доступны <strong>только для чтения</strong> через <code>GET /dt/storage/{Storage}/{ID}</code>.
-      Идентификатор объекта передаётся в параметре <code>{ID}</code> как GUID.</p>
+      Идентификатор объекта передаётся в параметре <code>{ID}</code> как string.</p>
 
       <!-- 3.1 -->
       <h3 class="sub" id="s3-1">3.1. Сотрудник</h3>
@@ -858,7 +858,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор сотрудника в 1С</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор сотрудника в 1С</td></tr>
             <tr><td><code>personnelNumber</code></td><td>string</td><td>Табельный номер</td></tr>
             <tr><td><code>lastName</code></td><td>string</td><td>Фамилия</td></tr>
             <tr><td><code>firstName</code></td><td>string</td><td>Имя</td></tr>
@@ -869,8 +869,8 @@
             <tr><td><code>warVeteranStatus</code></td><td>string</td><td>Сведения о статусе участника ВОВ</td></tr>
             <tr><td><code>pensionInfo</code></td><td>string</td><td>Сведения о пенсионном обеспечении</td></tr>
             <tr><td><code>iin</code></td><td>string</td><td>ИИН (индивидуальный идентификационный номер)</td></tr>
-            <tr><td><code>individualId</code></td><td>guid</td><td>Ссылка на запись физического лица</td></tr>
-            <tr><td><code>directManagerId</code></td><td>guid</td><td>Непосредственный руководитель (ID сотрудника)</td></tr>
+            <tr><td><code>individualId</code></td><td>string</td><td>Ссылка на запись физического лица</td></tr>
+            <tr><td><code>directManagerId</code></td><td>string</td><td>Непосредственный руководитель (ID сотрудника)</td></tr>
             <tr><td><code>directManagerEmail</code></td><td>string</td><td>Эл. адрес непосредственного руководителя</td></tr>
             <tr><td><code>headcountCategory</code></td><td>string</td><td>Headcount category</td></tr>
             <tr><td><code>grade</code></td><td>string</td><td>Grade</td></tr>
@@ -887,7 +887,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор физического лица</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор физического лица</td></tr>
             <tr><td><code>lastName</code></td><td>string</td><td>Фамилия</td></tr>
             <tr><td><code>firstName</code></td><td>string</td><td>Имя</td></tr>
             <tr><td><code>middleName</code></td><td>string</td><td>Отчество</td></tr>
@@ -898,7 +898,7 @@
             <tr><td><code>gender</code></td><td>string</td><td>Пол</td></tr>
             <tr><td><code>citizenship</code></td><td>string</td><td>Гражданство</td></tr>
             <tr><td><code>nationality</code></td><td>string</td><td>Национальность</td></tr>
-            <tr><td><code>personalAccountId</code></td><td>guid</td><td>Ссылка на лицевой счёт</td></tr>
+            <tr><td><code>personalAccountId</code></td><td>string</td><td>Ссылка на лицевой счёт</td></tr>
             <tr><td><code>taxPayerStatus</code></td><td>string</td><td>Статус налогоплательщика</td></tr>
             <tr><td><code>socialInsurance</code></td><td>boolean</td><td>Подлежит социальному страхованию</td></tr>
             <tr><td><code>pensionRights</code></td><td>boolean</td><td>Имеет право на пенсионное обеспечение</td></tr>
@@ -928,10 +928,10 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор лицевого счёта</td></tr>
-            <tr><td><code>organizationId</code></td><td>guid</td><td>Организация</td></tr>
-            <tr><td><code>salaryProjectId</code></td><td>guid</td><td>Зарплатный проект</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td>Сотрудник</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор лицевого счёта</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
+            <tr><td><code>salaryProjectId</code></td><td>string</td><td>Зарплатный проект</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td>Сотрудник</td></tr>
             <tr><td><code>accountNumber</code></td><td>string</td><td>Номер лицевого счёта</td></tr>
             <tr><td><code>openDate</code></td><td>string (yyyy-MM-dd)</td><td>Дата открытия</td></tr>
           </tbody>
@@ -946,12 +946,12 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор подразделения</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор подразделения</td></tr>
             <tr><td><code>nameRu</code></td><td>string</td><td>Наименование (рус.)</td></tr>
             <tr><td><code>nameKz</code></td><td>string</td><td>Наименование (каз.)</td></tr>
             <tr><td><code>nameEn</code></td><td>string</td><td>Наименование (англ.)</td></tr>
-            <tr><td><code>organizationId</code></td><td>guid</td><td>Организация</td></tr>
-            <tr><td><code>parentDivisionId</code></td><td>guid</td><td>Вышестоящее подразделение</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
+            <tr><td><code>parentDivisionId</code></td><td>string</td><td>Вышестоящее подразделение</td></tr>
             <tr><td><code>cityNameRu</code></td><td>string</td><td>Наименование города (рус.)</td></tr>
             <tr><td><code>cityNameKz</code></td><td>string</td><td>Наименование города (каз.)</td></tr>
             <tr><td><code>cityNameEn</code></td><td>string</td><td>Наименование города (англ.)</td></tr>
@@ -973,7 +973,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор должности</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор должности</td></tr>
             <tr><td><code>nameRu</code></td><td>string</td><td>Наименование (рус.)</td></tr>
             <tr><td><code>nameKz</code></td><td>string</td><td>Наименование (каз.)</td></tr>
             <tr><td><code>nameEn</code></td><td>string</td><td>Наименование (англ.)</td></tr>
@@ -994,10 +994,10 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор позиции</td></tr>
-            <tr><td><code>organizationId</code></td><td>guid</td><td>Организация</td></tr>
-            <tr><td><code>divisionId</code></td><td>guid</td><td>Подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>guid</td><td>Должность</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор позиции</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td>Подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td>Должность</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование позиции</td></tr>
             <tr><td><code>fullName</code></td><td>string</td><td>Полное наименование</td></tr>
             <tr><td><code>salaryRate</code></td><td>decimal</td><td>Оклад / часовая ставка</td></tr>
@@ -1014,7 +1014,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование графика</td></tr>
           </tbody>
         </table>
@@ -1028,7 +1028,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование вида отпуска</td></tr>
             <tr><td><code>daysPerYear</code></td><td>integer</td><td>Количество дней в год</td></tr>
           </tbody>
@@ -1043,7 +1043,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование начисления</td></tr>
           </tbody>
         </table>
@@ -1057,7 +1057,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование удержания</td></tr>
           </tbody>
         </table>
@@ -1071,7 +1071,7 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td>Уникальный идентификатор</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
             <tr><td><code>name</code></td><td>string</td><td>Наименование</td></tr>
             <tr><td><code>dismissalBasis</code></td><td>string</td><td>Основание увольнения (статья)</td></tr>
             <tr><td><code>dismissalReason</code></td><td>string</td><td>Причина увольнения из организации</td></tr>
@@ -1096,24 +1096,24 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор документа (заполнять при обновлении)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор документа (заполнять при обновлении)</td></tr>
             <tr><td><code>date</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата приёма на работу</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>individualId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Физическое лицо</td></tr>
-            <tr><td><code>organizationId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Организация</td></tr>
-            <tr><td><code>divisionId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Должность</td></tr>
-            <tr><td><code>staffPositionId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
-            <tr><td><code>workScheduleId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>График работы</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>individualId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Физическое лицо</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Организация</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Должность</td></tr>
+            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
+            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>График работы</td></tr>
             <tr><td><code>employmentType</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Вид занятости: <code>Основное место работы</code> / <code>Внешнее совместительство</code> / <code>Внутреннее совместительство</code></td></tr>
-            <tr><td><code>leaveTypes</code></td><td>array[guid]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска (массив ID из справочника ВидыОтпусков)</td></tr>
+            <tr><td><code>leaveTypes</code></td><td>array[string]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска (массив ID из справочника ВидыОтпусков)</td></tr>
             <tr><td><code>rateCount</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Количество ставок: <code>1</code> / <code>1/2</code> / <code>1/3</code> / <code>1/4</code> / <code>1/8</code> / <code>2/3</code></td></tr>
             <tr><td><code>contractNumber</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Номер трудового договора</td></tr>
             <tr><td><code>contractDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Дата трудового договора</td></tr>
             <tr><td><code>acceptanceConditions</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Условия приёма</td></tr>
             <tr><td><code>representativeBasis</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Основание представителя</td></tr>
             <tr><td><code>probationMonths</code></td><td>integer</td><td><span class="req-no">Нет</span></td><td>Испытательный срок (мес.)</td></tr>
-            <tr><td><code>accrualId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Начисление (ID из справочника Начисления)</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление (ID из справочника Начисления)</td></tr>
             <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Размер начисления</td></tr>
             <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Аванс: <code>Фиксированной суммой</code> / <code>Процентом от тарифа</code> / <code>Расчетом за первую половину месяца</code></td></tr>
             <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Разряд (категория)</td></tr>
@@ -1130,19 +1130,19 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
             <tr><td><code>transferDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата перевода</td></tr>
-            <tr><td><code>divisionId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Новое подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Новая должность</td></tr>
-            <tr><td><code>staffPositionId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Новое подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Новая должность</td></tr>
+            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
             <tr><td><code>employmentType</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Вид занятости</td></tr>
             <tr><td><code>remoteWorkMode</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Режим дистанционной работы: <code>Работа по месту нахождения работодателя</code> / <code>Комбинированная дистанционная работа</code> / <code>Дистанционная работа</code></td></tr>
-            <tr><td><code>leaveTypes</code></td><td>array[guid]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска</td></tr>
-            <tr><td><code>accrualId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
+            <tr><td><code>leaveTypes</code></td><td>array[string]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
             <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Размер начисления</td></tr>
             <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Способ расчёта аванса</td></tr>
-            <tr><td><code>workScheduleId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>График работы</td></tr>
+            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>График работы</td></tr>
             <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Разряд (категория)</td></tr>
           </tbody>
         </table>
@@ -1156,8 +1156,8 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
             <tr><td><code>changeDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата изменения</td></tr>
             <tr><td><code>accruals</code></td><td>array</td><td><span class="req-no">Нет</span></td><td>Список начислений</td></tr>
             <tr><td><code>accruals[].name</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Наименование показателя начисления</td></tr>
@@ -1177,15 +1177,15 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
             <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц начисления</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
             <tr><td><code>isContinuation</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Является продолжением листка нетрудоспособности</td></tr>
             <tr><td><code>absencePeriodStart</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата начала периода освобождения от работы</td></tr>
             <tr><td><code>absencePeriodEnd</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата окончания периода освобождения от работы</td></tr>
             <tr><td><code>incapacityReason</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Причина: <code>Отпуск по беременности и родам</code> / <code>Заболевание или травма</code> / <code>Профзаболевание</code> / <code>Травма на производстве</code> / <code>Карантин</code> / <code>Протезирование в стационаре</code> / <code>Долечивание в санаторно-курортных учреждениях</code> / <code>Уход за больным ребенком</code></td></tr>
             <tr><td><code>freePosition</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Освободить ставку на период отсутствия</td></tr>
-            <tr><td><code>accrualId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
             <tr><td><code>benefitStartDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Назначить пособие с (дата)</td></tr>
             <tr><td><code>benefitEndDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Назначить пособие по (дата)</td></tr>
             <tr><td><code>paymentPercent</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Процент оплаты</td></tr>
@@ -1203,9 +1203,9 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
             <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
             <tr><td><code>startDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата начала отпуска</td></tr>
             <tr><td><code>endDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Дата окончания отпуска</td></tr>
             <tr><td><code>noSalaryDuringLeave</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Не начислять зарплату и аванс во время отпуска</td></tr>
@@ -1223,14 +1223,14 @@
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
             <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц</td></tr>
-            <tr><td><code>employeeId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
             <tr><td><code>dismissalDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата увольнения</td></tr>
-            <tr><td><code>dismissalBasisId</code></td><td>guid</td><td><span class="req-yes">Да</span></td><td>Основание увольнения (ID из справочника ОснованияУвольнений)</td></tr>
+            <tr><td><code>dismissalBasisId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Основание увольнения (ID из справочника ОснованияУвольнений)</td></tr>
             <tr><td><code>leaveCompensation</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Компенсация отпуска: <code>Предоставить</code> / <code>Удержать</code> / <code>Не использовать</code></td></tr>
-            <tr><td><code>accrualId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
-            <tr><td><code>deductionId</code></td><td>guid</td><td><span class="req-no">Нет</span></td><td>Удержание</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
+            <tr><td><code>deductionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Удержание</td></tr>
           </tbody>
         </table>
       </div>
@@ -1256,7 +1256,7 @@
       <h4>Параметры URL</h4>
       <dl class="info-grid">
         <dt><code>{Storage}</code></dt><dd>Тип объекта, например: <code>Сотрудники</code>, <code>ПриемНаРаботу</code>, <code>Увольнение</code></dd>
-        <dt><code>{ID}</code></dt><dd>GUID объекта в 1С</dd>
+        <dt><code>{ID}</code></dt><dd>string объекта в 1С</dd>
         <dt><code>{VolumeID}</code></dt><dd>Идентификатор тома (для файловых операций)</dd>
       </dl>
 
@@ -1283,7 +1283,7 @@
         <div class="error-card">
           <div class="ec">ObjectNotFound</div>
           <div class="reason">Объект с указанным ID не найден</div>
-          <div class="action">→ Проверить корректность GUID</div>
+          <div class="action">→ Проверить корректность string</div>
         </div>
         <div class="error-card">
           <div class="ec">InvalidStorage</div>
@@ -1413,7 +1413,7 @@ Content-Type: application/json
       <h2 class="sec">8. Пользовательская документация</h2>
 
       <h3 class="sub">8.1. Когда читать справочники</h3>
-      <p>Данные справочников следует считывать перед созданием кадровых документов для получения актуальных идентификаторов (GUID) объектов. Рекомендуется:</p>
+      <p>Данные справочников следует считывать перед созданием кадровых документов для получения актуальных идентификаторов (string) объектов. Рекомендуется:</p>
       <ul>
         <li>кэшировать редко изменяемые справочники (Должности, Подразделения, Начисления, Графики работы);</li>
         <li>обновлять кэш по расписанию (например, ежедневно) или при обнаружении ошибки <code>ObjectNotFound</code>.</li>
@@ -1421,9 +1421,9 @@ Content-Type: application/json
 
       <h3 class="sub">8.2. Порядок создания документа</h3>
       <ol class="steps">
-        <li>Получить GUID нужных объектов через GET-запросы к справочникам.</li>
+        <li>Получить string нужных объектов через GET-запросы к справочникам.</li>
         <li>Сформировать тело JSON-запроса, заполнив все <strong>обязательные</strong> поля.</li>
-        <li>Отправить POST-запрос на <code>/dt/storage/{Storage}/00000000-0000-0000-0000-000000000000</code> (нулевой GUID при создании).</li>
+        <li>Отправить POST-запрос на <code>/dt/storage/{Storage}/00000000-0000-0000-0000-000000000000</code> (нулевой string при создании).</li>
         <li>Проверить поле <code>success</code> в ответе.</li>
         <li>Сохранить возвращённый <code>id</code> документа для возможного последующего обновления через PUT.</li>
       </ol>
@@ -1435,7 +1435,7 @@ Content-Type: application/json
           <tbody>
             <tr><td><code>success = true</code></td><td>Документ создан / обновлён. Сохранить id.</td></tr>
             <tr><td><code>ValidationError</code></td><td>Добавить недостающие обязательные поля и повторить запрос.</td></tr>
-            <tr><td><code>ObjectNotFound</code></td><td>Проверить корректность GUID объектов. Обновить кэш справочников.</td></tr>
+            <tr><td><code>ObjectNotFound</code></td><td>Проверить корректность string объектов. Обновить кэш справочников.</td></tr>
             <tr><td><code>DuplicateDocument</code></td><td>Документ уже существует — использовать PUT для обновления.</td></tr>
             <tr><td><code>InternalError</code></td><td>Зафиксировать текст ошибки и передать администратору интеграции.</td></tr>
             <tr><td>HTTP 401</td><td>Проверить логин/пароль или токен авторизации.</td></tr>
@@ -1449,7 +1449,7 @@ Content-Type: application/json
         <li>Хранить <code>id</code> созданных документов в журнале обмена для последующей сверки.</li>
         <li>При повторной передаче данных за тот же период сверять <code>id</code>: разный <code>id</code> означает создание нового документа.</li>
         <li>Даты передавать строго в формате <code>yyyy-MM-dd</code> (ISO 8601).</li>
-        <li>Все GUID передавать в нижнем регистре с дефисами: <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
+        <li>Все string передавать в нижнем регистре с дефисами: <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>.</li>
       </ul>
     </div>
 
