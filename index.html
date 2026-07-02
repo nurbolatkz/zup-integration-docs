@@ -416,6 +416,10 @@
     }
     .storage-tag .label { color: var(--muted); font-weight: 400; }
     .storage-tag code { background: none; padding: 0; color: var(--blue); font-weight: 700; font-size: 13px; }
+    .op-badges { display: inline-flex; gap: 4px; margin-left: 10px; align-items: center; }
+    .op-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10.5px; font-weight: 700; letter-spacing: .4px; }
+    .op-badge-rw { background: #E8F5E9; color: #1B5E20; border: 1px solid #A5D6A7; }
+    .op-badge-ro { background: #E3F2FD; color: #1565C0; border: 1px solid #90CAF9; }
 
     /* ── Data tables ────────────────────────────────────────────── */
     .tbl-wrap {
@@ -770,7 +774,7 @@
       <ol>
         <li><a href="#s1">Назначение сервиса</a></li>
         <li><a href="#s2">Краткое описание методов</a></li>
-        <li><a href="#s3">Справочники (чтение)
+        <li><a href="#s3">Справочники (чтение / запись)
           <ul>
             <li><a href="#s3-1">3.1 Сотрудник</a></li>
             <li><a href="#s3-2">3.2 Физическое лицо</a></li>
@@ -846,14 +850,17 @@
 
     <!-- ─────────────────────────────────── SECTION 3 -->
     <div class="section" id="s3">
-      <h2 class="sec">3. Справочники (чтение)</h2>
-      <p>Справочники доступны <strong>только для чтения</strong> через <code>GET /dt/storage/{Storage}/{ID}</code>.
-      Идентификатор объекта передаётся в параметре <code>{ID}</code> как string.</p>
+      <h2 class="sec">3. Справочники (чтение / запись)</h2>
+      <p>Справочники делятся на две группы по доступным операциям. Идентификатор объекта передаётся в параметре <code>{ID}</code> как строка (string).</p>
+      <ul>
+        <li><strong>Запись (GET + POST + PUT):</strong> Сотрудник, Физическое лицо, Лицевой счёт, Подразделение — поддерживают чтение, создание и обновление.</li>
+        <li><strong>Только чтение (GET):</strong> Должность, Позиция штатного расписания, График работы, Вид отпуска, Начисление, Удержание, Основания увольнений.</li>
+      </ul>
 
       <!-- 3.1 -->
       <h3 class="sub" id="s3-1">3.1. Сотрудник</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Сотрудники</code></div>
-      <p>Основной справочник сотрудников организации.</p>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>Сотрудники</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p>Основной справочник сотрудников организации. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
@@ -881,8 +888,8 @@
 
       <!-- 3.2 -->
       <h3 class="sub" id="s3-2">3.2. Физическое лицо</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ФизическиеЛица</code></div>
-      <p>Хранит персональные данные человека независимо от факта трудоустройства.</p>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ФизическиеЛица</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p>Хранит персональные данные человека независимо от факта трудоустройства. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
@@ -923,8 +930,8 @@
 
       <!-- 3.3 -->
       <h3 class="sub" id="s3-3">3.3. Лицевой счёт</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ЛицевыеСчета</code></div>
-      <p>Лицевые счета сотрудников в рамках зарплатных проектов.</p>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ЛицевыеСчета</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p>Лицевые счета сотрудников в рамках зарплатных проектов. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
@@ -941,8 +948,8 @@
 
       <!-- 3.4 -->
       <h3 class="sub" id="s3-4">3.4. Подразделение</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Подразделения</code></div>
-      <p>Организационные подразделения компании с многоязычными наименованиями.</p>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>Подразделения</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p>Организационные подразделения компании с многоязычными наименованиями. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
@@ -968,7 +975,7 @@
 
       <!-- 3.5 -->
       <h3 class="sub" id="s3-5">3.5. Должность</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Должности</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>Должности</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник должностей с наименованиями на трёх языках.</p>
       <div class="tbl-wrap">
         <table>
@@ -989,7 +996,7 @@
 
       <!-- 3.6 -->
       <h3 class="sub" id="s3-6">3.6. Позиция штатного расписания</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ШтатноеРасписание</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ШтатноеРасписание</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Позиции штатного расписания с привязкой к организации, подразделению и должности.</p>
       <div class="tbl-wrap">
         <table>
@@ -1009,7 +1016,7 @@
 
       <!-- 3.7 -->
       <h3 class="sub" id="s3-7">3.7. График работы</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ГрафикиРаботы</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ГрафикиРаботы</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник графиков рабочего времени.</p>
       <div class="tbl-wrap">
         <table>
@@ -1023,7 +1030,7 @@
 
       <!-- 3.8 -->
       <h3 class="sub" id="s3-8">3.8. Вид отпуска</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ВидыОтпусков</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ВидыОтпусков</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник видов отпусков.</p>
       <div class="tbl-wrap">
         <table>
@@ -1038,7 +1045,7 @@
 
       <!-- 3.9 -->
       <h3 class="sub" id="s3-9">3.9. Начисление</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Начисления</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>Начисления</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник видов начислений (оплат труда).</p>
       <div class="tbl-wrap">
         <table>
@@ -1052,7 +1059,7 @@
 
       <!-- 3.10 -->
       <h3 class="sub" id="s3-10">3.10. Удержание</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Удержания</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>Удержания</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник видов удержаний из заработной платы.</p>
       <div class="tbl-wrap">
         <table>
@@ -1066,7 +1073,7 @@
 
       <!-- 3.11 -->
       <h3 class="sub" id="s3-11">3.11. Основания увольнений</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ОснованияУвольнений</code></div>
+      <div class="storage-tag"><span class="label">Storage:</span> <code>ОснованияУвольнений</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
       <p>Справочник оснований увольнения сотрудников.</p>
       <div class="tbl-wrap">
         <table>
@@ -1462,9 +1469,17 @@ Content-Type: application/json
           <thead><tr><th>Объект</th><th>Операция</th><th>HTTP</th><th>URL</th></tr></thead>
           <tbody>
             <tr><td>Сотрудник</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
+            <tr><td>Сотрудник</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
+            <tr><td>Сотрудник</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
             <tr><td>Физическое лицо</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
+            <tr><td>Физическое лицо</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
+            <tr><td>Физическое лицо</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
             <tr><td>Лицевой счёт</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
+            <tr><td>Лицевой счёт</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
+            <tr><td>Лицевой счёт</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
             <tr><td>Подразделение</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
+            <tr><td>Подразделение</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
+            <tr><td>Подразделение</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
             <tr><td>Должность</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Должности/{ID}</code></td></tr>
             <tr><td>Позиция штатного расписания</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ШтатноеРасписание/{ID}</code></td></tr>
             <tr><td>График работы</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ГрафикиРаботы/{ID}</code></td></tr>
