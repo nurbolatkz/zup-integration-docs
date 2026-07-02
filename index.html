@@ -648,6 +648,17 @@
       #content { padding: 0; }
       pre { background: #f4f4f4; color: #222; }
     }
+
+    /* ── Language switcher ─────────────── */
+    .lang-sw { display:flex;gap:2px;background:#EEF2FF;border-radius:20px;padding:3px;margin-left:12px; }
+    .lang-sw button {
+      border:none;background:none;cursor:pointer;padding:4px 14px;
+      border-radius:16px;font-size:11.5px;font-weight:700;letter-spacing:.4px;
+      color:var(--muted);transition:background .15s,color .15s;
+      font-family:'Segoe UI',sans-serif;
+    }
+    .lang-sw button.active { background:var(--blue);color:#fff;box-shadow:0 1px 4px rgba(0,61,165,.25); }
+    .lang-sw button:hover:not(.active) { background:rgba(0,61,165,.08);color:var(--blue); }
   </style>
 </head>
 <body>
@@ -662,43 +673,43 @@
   </div>
 
   <div id="sidebar-scroll">
-    <div class="nav-group-label">Обзор</div>
+    <div class="nav-group-label" data-i18n="nav.grp.overview">Обзор</div>
     <nav>
       <a href="#cover">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M4 5h8M4 8h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Обзор документа
+        <span data-i18n="nav.overview">Обзор документа</span>
       </a>
       <a href="#toc">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Содержание
+        <span data-i18n="nav.toc">Содержание</span>
       </a>
     </nav>
 
-    <div class="nav-group-label">Разделы</div>
+    <div class="nav-group-label" data-i18n="nav.grp.sections">Разделы</div>
     <nav>
-      <a href="#s1"><span class="num-tag">1</span> Назначение сервиса</a>
-      <a href="#s2"><span class="num-tag">2</span> Методы</a>
+      <a href="#s1"><span class="num-tag">1</span> <span data-i18n="nav.s1">Назначение сервиса</span></a>
+      <a href="#s2"><span class="num-tag">2</span> <span data-i18n="nav.s2">Методы</span></a>
 
       <!-- collapsible: справочники -->
       <div class="nav-group open" id="grp-s3">
         <a href="#s3" class="grp-toggle">
           <span class="num-tag">3</span>
-          Справочники
+          <span data-i18n="nav.s3">Справочники</span>
           <span class="chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <div class="nav-group-children">
           <div class="sub-tree">
-            <a href="#s3-1" class="sub">3.1 Сотрудник</a>
-            <a href="#s3-2" class="sub">3.2 Физическое лицо</a>
-            <a href="#s3-3" class="sub">3.3 Лицевой счёт</a>
-            <a href="#s3-4" class="sub">3.4 Подразделение</a>
-            <a href="#s3-5" class="sub">3.5 Должность</a>
-            <a href="#s3-6" class="sub">3.6 Штатное расписание</a>
-            <a href="#s3-7" class="sub">3.7 График работы</a>
-            <a href="#s3-8" class="sub">3.8 Вид отпуска</a>
-            <a href="#s3-9" class="sub">3.9 Начисление</a>
-            <a href="#s3-10" class="sub">3.10 Удержание</a>
-            <a href="#s3-11" class="sub">3.11 Осн. увольнений</a>
+            <a href="#s3-1" class="sub" data-i18n="nav.s3_1">3.1 Сотрудник</a>
+            <a href="#s3-2" class="sub" data-i18n="nav.s3_2">3.2 Физическое лицо</a>
+            <a href="#s3-3" class="sub" data-i18n="nav.s3_3">3.3 Лицевой счёт</a>
+            <a href="#s3-4" class="sub" data-i18n="nav.s3_4">3.4 Подразделение</a>
+            <a href="#s3-5" class="sub" data-i18n="nav.s3_5">3.5 Должность</a>
+            <a href="#s3-6" class="sub" data-i18n="nav.s3_6">3.6 Штатное расписание</a>
+            <a href="#s3-7" class="sub" data-i18n="nav.s3_7">3.7 График работы</a>
+            <a href="#s3-8" class="sub" data-i18n="nav.s3_8">3.8 Вид отпуска</a>
+            <a href="#s3-9" class="sub" data-i18n="nav.s3_9">3.9 Начисление</a>
+            <a href="#s3-10" class="sub" data-i18n="nav.s3_10">3.10 Удержание</a>
+            <a href="#s3-11" class="sub" data-i18n="nav.s3_11">3.11 Осн. увольнений</a>
           </div>
         </div>
       </div>
@@ -707,32 +718,32 @@
       <div class="nav-group open" id="grp-s4">
         <a href="#s4" class="grp-toggle">
           <span class="num-tag">4</span>
-          Документы
+          <span data-i18n="nav.s4">Документы</span>
           <span class="chevron"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <div class="nav-group-children">
           <div class="sub-tree">
-            <a href="#s4-1" class="sub">4.1 Приём на работу</a>
-            <a href="#s4-2" class="sub">4.2 Кадровый перевод</a>
-            <a href="#s4-3" class="sub">4.3 Изм. оплаты труда</a>
-            <a href="#s4-4" class="sub">4.4 Больничный лист</a>
-            <a href="#s4-5" class="sub">4.5 Отпуск по уходу</a>
-            <a href="#s4-6" class="sub">4.6 Увольнение</a>
+            <a href="#s4-1" class="sub" data-i18n="nav.s4_1">4.1 Приём на работу</a>
+            <a href="#s4-2" class="sub" data-i18n="nav.s4_2">4.2 Кадровый перевод</a>
+            <a href="#s4-3" class="sub" data-i18n="nav.s4_3">4.3 Изм. оплаты труда</a>
+            <a href="#s4-4" class="sub" data-i18n="nav.s4_4">4.4 Больничный лист</a>
+            <a href="#s4-5" class="sub" data-i18n="nav.s4_5">4.5 Отпуск по уходу</a>
+            <a href="#s4-6" class="sub" data-i18n="nav.s4_6">4.6 Увольнение</a>
           </div>
         </div>
       </div>
 
-      <a href="#s5"><span class="num-tag">5</span> HTTP-методы</a>
-      <a href="#s6"><span class="num-tag">6</span> Ошибки</a>
-      <a href="#s7"><span class="num-tag">7</span> Примеры</a>
-      <a href="#s8"><span class="num-tag">8</span> Руководство</a>
-      <a href="#s9"><span class="num-tag">9</span> Памятка</a>
+      <a href="#s5"><span class="num-tag">5</span> <span data-i18n="nav.s5">HTTP-методы</span></a>
+      <a href="#s6"><span class="num-tag">6</span> <span data-i18n="nav.s6">Ошибки</span></a>
+      <a href="#s7"><span class="num-tag">7</span> <span data-i18n="nav.s7">Примеры</span></a>
+      <a href="#s8"><span class="num-tag">8</span> <span data-i18n="nav.s8">Руководство</span></a>
+      <a href="#s9"><span class="num-tag">9</span> <span data-i18n="nav.s9">Памятка</span></a>
     </nav>
   </div>
 
   <div class="sidebar-footer">
     <span class="dot"></span>
-    © 2026 KazUni · v1.0
+    <span data-i18n="sidebar.footer">© 2026 KazUni · v1.0</span>
   </div>
 </aside>
 
@@ -741,350 +752,353 @@
 
   <!-- Top bar -->
   <div id="topbar">
-    <span class="doc-title">Документация сервиса интеграции ЗУП</span>
-    <span class="badge">⚠ Проектная спецификация</span>
+    <span class="doc-title" data-i18n="topbar.title">Документация сервиса интеграции ЗУП</span>
+    <div style="display:flex;align-items:center;">
+      <span class="badge" data-i18n="topbar.badge">⚠ Проектная спецификация</span>
+      <div class="lang-sw"><button id="btn-ru" class="active" onclick="setLang('ru')">RU</button><button id="btn-en" onclick="setLang('en')">EN</button></div>
+    </div>
   </div>
 
   <div id="content">
 
     <!-- Cover -->
     <div class="cover" id="cover">
-      <div class="cover-label">KazUni · Техническая спецификация</div>
-      <h1>Документация сервиса интеграции ЗУП<br>Кадровые документы</h1>
-      <p class="sub">Чтение, создание и обновление кадровых объектов через HTTP-сервис ПередачаДанных (1С:ЗУП)</p>
+      <div class="cover-label" data-i18n="cover.label">KazUni · Техническая спецификация</div>
+      <h1 data-i18n="cover.title">Документация сервиса интеграции ЗУП<br>Кадровые документы</h1>
+      <p class="sub" data-i18n="cover.sub">Чтение, создание и обновление кадровых объектов через HTTP-сервис ПередачаДанных (1С:ЗУП)</p>
       <dl class="cover-meta">
-        <dt>Сервис</dt><dd>ПередачаДанных / RootURL: /dt</dd>
-        <dt>Конфигурация</dt><dd>ЗУП для Казахстана, ред. 3.1</dd>
-        <dt>Формат</dt><dd>HTTP (GET / POST / PUT) · JSON</dd>
-        <dt>Авторизация</dt><dd>Basic Auth / токен</dd>
-        <dt>Дата документа</dt><dd>01.07.2026</dd>
-        <dt>Статус</dt><dd>Проектная спецификация</dd>
+        <dt data-i18n="cover.meta.service">Сервис</dt><dd>ПередачаДанных / RootURL: /dt</dd>
+        <dt data-i18n="cover.meta.config">Конфигурация</dt><dd data-i18n="cover.dd.config">ЗУП для Казахстана, ред. 3.1</dd>
+        <dt data-i18n="cover.meta.format">Формат</dt><dd>HTTP (GET / POST / PUT) · JSON</dd>
+        <dt data-i18n="cover.meta.auth">Авторизация</dt><dd data-i18n="cover.dd.auth">Basic Auth / токен</dd>
+        <dt data-i18n="cover.meta.date">Дата документа</dt><dd>01.07.2026</dd>
+        <dt data-i18n="cover.meta.status">Статус</dt><dd data-i18n="cover.dd.status">Проектная спецификация</dd>
       </dl>
     </div>
 
     <!-- Status banner -->
     <div class="status-banner">
-      <strong>⚠ Статус: проектная спецификация.</strong>
-      Сервис находится в стадии разработки. Настоящий документ направляется партнёрам для анализа и согласования состава данных.
+      <strong data-i18n="banner.strong">⚠ Статус: проектная спецификация.</strong>
+      <span data-i18n="banner.text">Сервис находится в стадии разработки. Настоящий документ направляется партнёрам для анализа и согласования состава данных.</span>
     </div>
 
     <!-- TOC -->
     <div class="toc" id="toc">
-      <div class="toc-title">Содержание</div>
+      <div class="toc-title" data-i18n="toc.title">Содержание</div>
       <ol>
-        <li><a href="#s1">Назначение сервиса</a></li>
-        <li><a href="#s2">Краткое описание методов</a></li>
-        <li><a href="#s3">Справочники (чтение / запись)
+        <li><a href="#s1" data-i18n="toc.s1">Назначение сервиса</a></li>
+        <li><a href="#s2" data-i18n="toc.s2">Краткое описание методов</a></li>
+        <li><a href="#s3" data-i18n="toc.s3">Справочники (чтение / запись)
           <ul>
-            <li><a href="#s3-1">3.1 Сотрудник</a></li>
-            <li><a href="#s3-2">3.2 Физическое лицо</a></li>
-            <li><a href="#s3-3">3.3 Лицевой счёт</a></li>
-            <li><a href="#s3-4">3.4 Подразделение</a></li>
-            <li><a href="#s3-5">3.5 Должность</a></li>
-            <li><a href="#s3-6">3.6 Позиция штатного расписания</a></li>
-            <li><a href="#s3-7">3.7 График работы</a></li>
-            <li><a href="#s3-8">3.8 Вид отпуска</a></li>
-            <li><a href="#s3-9">3.9 Начисление</a></li>
-            <li><a href="#s3-10">3.10 Удержание</a></li>
-            <li><a href="#s3-11">3.11 Основания увольнений</a></li>
+            <li><a href="#s3-1" data-i18n="toc.s3_1">3.1 Сотрудник</a></li>
+            <li><a href="#s3-2" data-i18n="toc.s3_2">3.2 Физическое лицо</a></li>
+            <li><a href="#s3-3" data-i18n="toc.s3_3">3.3 Лицевой счёт</a></li>
+            <li><a href="#s3-4" data-i18n="toc.s3_4">3.4 Подразделение</a></li>
+            <li><a href="#s3-5" data-i18n="toc.s3_5">3.5 Должность</a></li>
+            <li><a href="#s3-6" data-i18n="toc.s3_6">3.6 Позиция штатного расписания</a></li>
+            <li><a href="#s3-7" data-i18n="toc.s3_7">3.7 График работы</a></li>
+            <li><a href="#s3-8" data-i18n="toc.s3_8">3.8 Вид отпуска</a></li>
+            <li><a href="#s3-9" data-i18n="toc.s3_9">3.9 Начисление</a></li>
+            <li><a href="#s3-10" data-i18n="toc.s3_10">3.10 Удержание</a></li>
+            <li><a href="#s3-11" data-i18n="toc.s3_11">3.11 Основания увольнений</a></li>
           </ul>
         </li>
-        <li><a href="#s4">Документы (создание / обновление)
+        <li><a href="#s4" data-i18n="toc.s4">Документы (создание / обновление)
           <ul>
-            <li><a href="#s4-1">4.1 Приём на работу</a></li>
-            <li><a href="#s4-2">4.2 Кадровый перевод</a></li>
-            <li><a href="#s4-3">4.3 Изменение оплаты труда</a></li>
-            <li><a href="#s4-4">4.4 Больничный лист</a></li>
-            <li><a href="#s4-5">4.5 Отпуск по уходу за ребёнком</a></li>
-            <li><a href="#s4-6">4.6 Увольнение</a></li>
+            <li><a href="#s4-1" data-i18n="toc.s4_1">4.1 Приём на работу</a></li>
+            <li><a href="#s4-2" data-i18n="toc.s4_2">4.2 Кадровый перевод</a></li>
+            <li><a href="#s4-3" data-i18n="toc.s4_3">4.3 Изменение оплаты труда</a></li>
+            <li><a href="#s4-4" data-i18n="toc.s4_4">4.4 Больничный лист</a></li>
+            <li><a href="#s4-5" data-i18n="toc.s4_5">4.5 Отпуск по уходу за ребёнком</a></li>
+            <li><a href="#s4-6" data-i18n="toc.s4_6">4.6 Увольнение</a></li>
           </ul>
         </li>
-        <li><a href="#s5">Описание HTTP-методов</a></li>
-        <li><a href="#s6">Обработка ошибок</a></li>
-        <li><a href="#s7">Примеры запросов и ответов</a></li>
-        <li><a href="#s8">Пользовательская документация</a></li>
-        <li><a href="#s9">Краткая памятка</a></li>
+        <li><a href="#s5" data-i18n="toc.s5">Описание HTTP-методов</a></li>
+        <li><a href="#s6" data-i18n="toc.s6">Обработка ошибок</a></li>
+        <li><a href="#s7" data-i18n="toc.s7">Примеры запросов и ответов</a></li>
+        <li><a href="#s8" data-i18n="toc.s8">Пользовательская документация</a></li>
+        <li><a href="#s9" data-i18n="toc.s9">Краткая памятка</a></li>
       </ol>
     </div>
 
     <!-- ─────────────────────────────────── SECTION 1 -->
     <div class="section" id="s1">
-      <h2 class="sec">1. Назначение сервиса</h2>
-      <p>Сервис предназначен для двунаправленного обмена кадровыми данными между внешними системами
+      <h2 class="sec" data-i18n="h2.s1">1. Назначение сервиса</h2>
+      <p data-i18n="s1.p1">Сервис предназначен для двунаправленного обмена кадровыми данными между внешними системами
       (CRM, корпоративные порталы, кадровые системы) и конфигурацией
       <strong>Зарплата и управление персоналом для Казахстана</strong> (1С:ЗУП, ред. 3.1).</p>
-      <p>Через сервис планируется обеспечить:</p>
+      <p data-i18n="s1.p2">Через сервис планируется обеспечить:</p>
       <ul>
-        <li><strong>Создание</strong> кадровых документов: приём на работу, кадровый перевод, изменение оплаты труда, больничный лист, отпуск по уходу за ребёнком, увольнение;</li>
-        <li><strong>Обновление</strong> ранее созданных кадровых документов.</li>
+        <li data-i18n="s1.li1"><strong>Создание</strong> кадровых документов: приём на работу, кадровый перевод, изменение оплаты труда, больничный лист, отпуск по уходу за ребёнком, увольнение;</li>
+        <li data-i18n="s1.li2"><strong>Обновление</strong> ранее созданных кадровых документов.</li>
       </ul>
       <dl class="info-grid">
-        <dt>Источник данных</dt><dd>Внешняя система (CRM, портал, кадровая система)</dd>
-        <dt>Потребитель данных</dt><dd>1С:ЗУП для Казахстана, ред. 3.1</dd>
-        <dt>Базовый URL сервиса</dt><dd><code>https://&lt;1c-host&gt;/hs/dt/</code></dd>
-        <dt>Формат тела запроса / ответа</dt><dd>JSON</dd>
-        <dt>Кодировка</dt><dd>UTF-8</dd>
+        <dt data-i18n="s1.ig.source">Источник данных</dt><dd data-i18n="s1.dd.source">Внешняя система (CRM, портал, кадровая система)</dd>
+        <dt data-i18n="s1.ig.consumer">Потребитель данных</dt><dd data-i18n="s1.dd.consumer">1С:ЗУП для Казахстана, ред. 3.1</dd>
+        <dt data-i18n="s1.ig.url">Базовый URL сервиса</dt><dd><code>https://&lt;1c-host&gt;/hs/dt/</code></dd>
+        <dt data-i18n="s1.ig.format">Формат тела запроса / ответа</dt><dd>JSON</dd>
+        <dt data-i18n="s1.ig.encoding">Кодировка</dt><dd>UTF-8</dd>
       </dl>
     </div>
 
     <!-- ─────────────────────────────────── SECTION 2 -->
     <div class="section" id="s2">
-      <h2 class="sec">2. Краткое описание методов</h2>
-      <p>Планируемый HTTP-сервис предоставит следующие конечные точки:</p>
+      <h2 class="sec" data-i18n="h2.s2">2. Краткое описание методов</h2>
+      <p data-i18n="s2.p1">Планируемый HTTP-сервис предоставит следующие конечные точки:</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>HTTP-метод</th><th>URL-шаблон</th><th>Операция</th><th>Назначение</th></tr></thead>
+          <thead><tr><th data-i18n="th.http_method">HTTP-метод</th><th data-i18n="th.url_template">URL-шаблон</th><th data-i18n="th.operation">Операция</th><th data-i18n="th.purpose">Назначение</th></tr></thead>
           <tbody>
-            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td>Чтение</td><td>Получить объект по типу и идентификатору</td></tr>
-            <tr><td><span class="method method-post">POST</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td>Создание</td><td>Создать новый объект</td></tr>
-            <tr><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td><td>Обновление</td><td>Обновить существующий объект по ID</td></tr>
-            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/download/{ID}</code></td><td>Скачивание</td><td>Скачать файловый объект</td></tr>
-            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/volume/{VolumeID}/*</code></td><td>Файл по тому</td><td>Получить файл по тому и пути</td></tr>
-            <tr><td><span class="method method-post">POST</span></td><td><code>/dt/volume/{VolumeID}/*</code></td><td>Загрузка файла</td><td>Загрузить файл</td></tr>
+            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td data-i18n="op.read">Чтение</td><td data-i18n="s2.purpose.get">Получить объект по типу и идентификатору</td></tr>
+            <tr><td><span class="method method-post">POST</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td data-i18n="op.create">Создание</td><td data-i18n="s2.purpose.post">Создать новый объект</td></tr>
+            <tr><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td><td data-i18n="op.update">Обновление</td><td data-i18n="s2.purpose.put">Обновить существующий объект по ID</td></tr>
+            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/download/{ID}</code></td><td data-i18n="op.download">Скачивание</td><td data-i18n="s2.purpose.download">Скачать файловый объект</td></tr>
+            <tr><td><span class="method method-get">GET</span></td><td><code>/dt/volume/{VolumeID}/*</code></td><td data-i18n="op.volume">Файл по тому</td><td data-i18n="s2.purpose.volume_get">Получить файл по тому и пути</td></tr>
+            <tr><td><span class="method method-post">POST</span></td><td><code>/dt/volume/{VolumeID}/*</code></td><td data-i18n="op.upload">Загрузка файла</td><td data-i18n="s2.purpose.volume_post">Загрузить файл</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Параметр <code>{Storage}</code> определяет тип объекта (справочник или документ). Значения приведены в разделах 3–4.</p>
+      <p data-i18n="s2.p2">Параметр <code>{Storage}</code> определяет тип объекта (справочник или документ). Значения приведены в разделах 3–4.</p>
     </div>
 
     <!-- ─────────────────────────────────── SECTION 3 -->
     <div class="section" id="s3">
-      <h2 class="sec">3. Справочники (чтение / запись)</h2>
-      <p>Справочники делятся на две группы по доступным операциям. Идентификатор объекта передаётся в параметре <code>{ID}</code> как строка (string).</p>
+      <h2 class="sec" data-i18n="h2.s3">3. Справочники (чтение / запись)</h2>
+      <p data-i18n="s3.p1">Справочники делятся на две группы по доступным операциям. Идентификатор объекта передаётся в параметре <code>{ID}</code> как строка (string).</p>
       <ul>
-        <li><strong>Запись (GET + POST + PUT):</strong> Сотрудник, Физическое лицо, Лицевой счёт, Подразделение — поддерживают чтение, создание и обновление.</li>
-        <li><strong>Только чтение (GET):</strong> Должность, Позиция штатного расписания, График работы, Вид отпуска, Начисление, Удержание, Основания увольнений.</li>
+        <li data-i18n="s3.li1"><strong>Запись (GET + POST + PUT):</strong> Сотрудник, Физическое лицо, Лицевой счёт, Подразделение — поддерживают чтение, создание и обновление.</li>
+        <li data-i18n="s3.li2"><strong>Только чтение (GET):</strong> Должность, Позиция штатного расписания, График работы, Вид отпуска, Начисление, Удержание, Основания увольнений.</li>
       </ul>
 
       <!-- 3.1 -->
-      <h3 class="sub" id="s3-1">3.1. Сотрудник</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Сотрудники</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
-      <p>Основной справочник сотрудников организации. Поддерживает чтение, создание и обновление.</p>
+      <h3 class="sub" data-i18n="h3.s8_4" data-i18n="h3.s8_3" data-i18n="h3.s8_2" data-i18n="h3.s8_1" data-i18n="h3.s7_5" data-i18n="h3.s7_4" data-i18n="h3.s7_3" data-i18n="h3.s7_2" data-i18n="h3.s7_1" data-i18n="h3.s4_6" data-i18n="h3.s4_5" data-i18n="h3.s4_4" data-i18n="h3.s4_3" data-i18n="h3.s4_2" data-i18n="h3.s4_1" data-i18n="h3.s3_11" data-i18n="h3.s3_10" data-i18n="h3.s3_9" data-i18n="h3.s3_8" data-i18n="h3.s3_7" data-i18n="h3.s3_6" data-i18n="h3.s3_5" data-i18n="h3.s3_4" data-i18n="h3.s3_3" data-i18n="h3.s3_2" data-i18n="h3.s3_1" id="s3-1">3.1. Сотрудник</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Сотрудники</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p data-i18n="s3_1.desc">Основной справочник сотрудников организации. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор сотрудника в 1С</td></tr>
-            <tr><td><code>personnelNumber</code></td><td>string</td><td>Табельный номер</td></tr>
-            <tr><td><code>lastName</code></td><td>string</td><td>Фамилия</td></tr>
-            <tr><td><code>firstName</code></td><td>string</td><td>Имя</td></tr>
-            <tr><td><code>middleName</code></td><td>string</td><td>Отчество</td></tr>
-            <tr><td><code>birthDate</code></td><td>string (yyyy-MM-dd)</td><td>Дата рождения</td></tr>
-            <tr><td><code>gender</code></td><td>string</td><td>Пол (Мужской / Женский)</td></tr>
-            <tr><td><code>disabilityInfo</code></td><td>string</td><td>Сведения об инвалидности</td></tr>
-            <tr><td><code>warVeteranStatus</code></td><td>string</td><td>Сведения о статусе участника ВОВ</td></tr>
-            <tr><td><code>pensionInfo</code></td><td>string</td><td>Сведения о пенсионном обеспечении</td></tr>
-            <tr><td><code>iin</code></td><td>string</td><td>ИИН (индивидуальный идентификационный номер)</td></tr>
-            <tr><td><code>individualId</code></td><td>string</td><td>Ссылка на запись физического лица</td></tr>
-            <tr><td><code>directManagerId</code></td><td>string</td><td>Непосредственный руководитель (ID сотрудника)</td></tr>
-            <tr><td><code>directManagerEmail</code></td><td>string</td><td>Эл. адрес непосредственного руководителя</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.emp.id">Уникальный идентификатор сотрудника в 1С</td></tr>
+            <tr><td><code>personnelNumber</code></td><td>string</td><td data-i18n="td.emp.personnel_num">Табельный номер</td></tr>
+            <tr><td><code>lastName</code></td><td>string</td><td data-i18n="td.lastname">Фамилия</td></tr>
+            <tr><td><code>firstName</code></td><td>string</td><td data-i18n="td.firstname">Имя</td></tr>
+            <tr><td><code>middleName</code></td><td>string</td><td data-i18n="td.middlename">Отчество</td></tr>
+            <tr><td><code>birthDate</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.birthdate">Дата рождения</td></tr>
+            <tr><td><code>gender</code></td><td>string</td><td data-i18n="td.gender_full">Пол (Мужской / Женский)</td></tr>
+            <tr><td><code>disabilityInfo</code></td><td>string</td><td data-i18n="td.disability">Сведения об инвалидности</td></tr>
+            <tr><td><code>warVeteranStatus</code></td><td>string</td><td data-i18n="td.war_veteran">Сведения о статусе участника ВОВ</td></tr>
+            <tr><td><code>pensionInfo</code></td><td>string</td><td data-i18n="td.pension_info">Сведения о пенсионном обеспечении</td></tr>
+            <tr><td><code>iin</code></td><td>string</td><td data-i18n="td.iin_full">ИИН (индивидуальный идентификационный номер)</td></tr>
+            <tr><td><code>individualId</code></td><td>string</td><td data-i18n="td.individual_ref">Ссылка на запись физического лица</td></tr>
+            <tr><td><code>directManagerId</code></td><td>string</td><td data-i18n="td.manager">Непосредственный руководитель (ID сотрудника)</td></tr>
+            <tr><td><code>directManagerEmail</code></td><td>string</td><td data-i18n="td.manager_email">Эл. адрес непосредственного руководителя</td></tr>
             <tr><td><code>headcountCategory</code></td><td>string</td><td>Headcount category</td></tr>
             <tr><td><code>grade</code></td><td>string</td><td>Grade</td></tr>
-            <tr><td><code>employeeType</code></td><td>string</td><td>Тип сотрудника</td></tr>
+            <tr><td><code>employeeType</code></td><td>string</td><td data-i18n="td.emp_type">Тип сотрудника</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.2 -->
-      <h3 class="sub" id="s3-2">3.2. Физическое лицо</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ФизическиеЛица</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
-      <p>Хранит персональные данные человека независимо от факта трудоустройства. Поддерживает чтение, создание и обновление.</p>
+      <h3 class="sub" id="s3-2" data-i18n="h3.s3_2">3.2. Физическое лицо</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ФизическиеЛица</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p data-i18n="s3_2.desc">Хранит персональные данные человека независимо от факта трудоустройства. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор физического лица</td></tr>
-            <tr><td><code>lastName</code></td><td>string</td><td>Фамилия</td></tr>
-            <tr><td><code>firstName</code></td><td>string</td><td>Имя</td></tr>
-            <tr><td><code>middleName</code></td><td>string</td><td>Отчество</td></tr>
-            <tr><td><code>fullNameEn</code></td><td>string</td><td>ФИО на английском</td></tr>
-            <tr><td><code>addressEn</code></td><td>string</td><td>Адрес на английском</td></tr>
-            <tr><td><code>iin</code></td><td>string</td><td>ИИН</td></tr>
-            <tr><td><code>birthDate</code></td><td>string (yyyy-MM-dd)</td><td>Дата рождения</td></tr>
-            <tr><td><code>gender</code></td><td>string</td><td>Пол</td></tr>
-            <tr><td><code>citizenship</code></td><td>string</td><td>Гражданство</td></tr>
-            <tr><td><code>nationality</code></td><td>string</td><td>Национальность</td></tr>
-            <tr><td><code>personalAccountId</code></td><td>string</td><td>Ссылка на лицевой счёт</td></tr>
-            <tr><td><code>taxPayerStatus</code></td><td>string</td><td>Статус налогоплательщика</td></tr>
-            <tr><td><code>socialInsurance</code></td><td>boolean</td><td>Подлежит социальному страхованию</td></tr>
-            <tr><td><code>pensionRights</code></td><td>boolean</td><td>Имеет право на пенсионное обеспечение</td></tr>
-            <tr><td><code>medicalInsurance</code></td><td>boolean</td><td>Подлежит социальному медицинскому страхованию</td></tr>
-            <tr><td><code>idDocType</code></td><td>string</td><td>Вид документа, удостоверяющего личность</td></tr>
-            <tr><td><code>idDocSeries</code></td><td>string</td><td>Серия документа</td></tr>
-            <tr><td><code>idDocNumber</code></td><td>string</td><td>Номер документа</td></tr>
-            <tr><td><code>idDocIssuedBy</code></td><td>string</td><td>Кем выдан</td></tr>
-            <tr><td><code>idDocIssueDate</code></td><td>string (yyyy-MM-dd)</td><td>Дата выдачи</td></tr>
-            <tr><td><code>idDocExpiryDate</code></td><td>string (yyyy-MM-dd)</td><td>Срок действия</td></tr>
-            <tr><td><code>idDocValidFrom</code></td><td>string (yyyy-MM-dd)</td><td>Сведения о документе действуют с</td></tr>
-            <tr><td><code>iitDeductions</code></td><td>string</td><td>Виды вычетов ИПН</td></tr>
-            <tr><td><code>militaryRecord</code></td><td>string</td><td>Воинский учёт</td></tr>
-            <tr><td><code>education</code></td><td>string</td><td>Образование</td></tr>
-            <tr><td><code>genderEn</code></td><td>string</td><td>Пол на английском</td></tr>
-            <tr><td><code>birthPlace</code></td><td>string</td><td>Место рождения</td></tr>
-            <tr><td><code>cityEn</code></td><td>string</td><td>Город на английском</td></tr>
-            <tr><td><code>accessGroup</code></td><td>string</td><td>Группа доступа физ лиц</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.ind.id">Уникальный идентификатор физического лица</td></tr>
+            <tr><td><code>lastName</code></td><td>string</td><td data-i18n="td.lastname">Фамилия</td></tr>
+            <tr><td><code>firstName</code></td><td>string</td><td data-i18n="td.firstname">Имя</td></tr>
+            <tr><td><code>middleName</code></td><td>string</td><td data-i18n="td.middlename">Отчество</td></tr>
+            <tr><td><code>fullNameEn</code></td><td>string</td><td data-i18n="td.fullname_en">ФИО на английском</td></tr>
+            <tr><td><code>addressEn</code></td><td>string</td><td data-i18n="td.address_en">Адрес на английском</td></tr>
+            <tr><td><code>iin</code></td><td>string</td><td data-i18n="td.iin">ИИН</td></tr>
+            <tr><td><code>birthDate</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.birthdate">Дата рождения</td></tr>
+            <tr><td><code>gender</code></td><td>string</td><td data-i18n="td.gender">Пол</td></tr>
+            <tr><td><code>citizenship</code></td><td>string</td><td data-i18n="td.citizenship">Гражданство</td></tr>
+            <tr><td><code>nationality</code></td><td>string</td><td data-i18n="td.nationality">Национальность</td></tr>
+            <tr><td><code>personalAccountId</code></td><td>string</td><td data-i18n="td.account_ref">Ссылка на лицевой счёт</td></tr>
+            <tr><td><code>taxPayerStatus</code></td><td>string</td><td data-i18n="td.tax_status">Статус налогоплательщика</td></tr>
+            <tr><td><code>socialInsurance</code></td><td>boolean</td><td data-i18n="td.social_ins">Подлежит социальному страхованию</td></tr>
+            <tr><td><code>pensionRights</code></td><td>boolean</td><td data-i18n="td.pension_rights">Имеет право на пенсионное обеспечение</td></tr>
+            <tr><td><code>medicalInsurance</code></td><td>boolean</td><td data-i18n="td.med_ins">Подлежит социальному медицинскому страхованию</td></tr>
+            <tr><td><code>idDocType</code></td><td>string</td><td data-i18n="td.id_doc_type">Вид документа, удостоверяющего личность</td></tr>
+            <tr><td><code>idDocSeries</code></td><td>string</td><td data-i18n="td.doc_series">Серия документа</td></tr>
+            <tr><td><code>idDocNumber</code></td><td>string</td><td data-i18n="td.doc_number">Номер документа</td></tr>
+            <tr><td><code>idDocIssuedBy</code></td><td>string</td><td data-i18n="td.doc_issued_by">Кем выдан</td></tr>
+            <tr><td><code>idDocIssueDate</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.doc_issue_date">Дата выдачи</td></tr>
+            <tr><td><code>idDocExpiryDate</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.doc_expiry">Срок действия</td></tr>
+            <tr><td><code>idDocValidFrom</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.doc_valid_from">Сведения о документе действуют с</td></tr>
+            <tr><td><code>iitDeductions</code></td><td>string</td><td data-i18n="td.iit_deductions">Виды вычетов ИПН</td></tr>
+            <tr><td><code>militaryRecord</code></td><td>string</td><td data-i18n="td.military">Воинский учёт</td></tr>
+            <tr><td><code>education</code></td><td>string</td><td data-i18n="td.education">Образование</td></tr>
+            <tr><td><code>genderEn</code></td><td>string</td><td data-i18n="td.gender_en">Пол на английском</td></tr>
+            <tr><td><code>birthPlace</code></td><td>string</td><td data-i18n="td.birthplace">Место рождения</td></tr>
+            <tr><td><code>cityEn</code></td><td>string</td><td data-i18n="td.city_en">Город на английском</td></tr>
+            <tr><td><code>accessGroup</code></td><td>string</td><td data-i18n="td.access_group">Группа доступа физ лиц</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.3 -->
-      <h3 class="sub" id="s3-3">3.3. Лицевой счёт</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ЛицевыеСчета</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
-      <p>Лицевые счета сотрудников в рамках зарплатных проектов. Поддерживает чтение, создание и обновление.</p>
+      <h3 class="sub" id="s3-3" data-i18n="h3.s3_3">3.3. Лицевой счёт</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ЛицевыеСчета</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p data-i18n="s3_3.desc">Лицевые счета сотрудников в рамках зарплатных проектов. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор лицевого счёта</td></tr>
-            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
-            <tr><td><code>salaryProjectId</code></td><td>string</td><td>Зарплатный проект</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td>Сотрудник</td></tr>
-            <tr><td><code>accountNumber</code></td><td>string</td><td>Номер лицевого счёта</td></tr>
-            <tr><td><code>openDate</code></td><td>string (yyyy-MM-dd)</td><td>Дата открытия</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.acc.id">Уникальный идентификатор лицевого счёта</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td data-i18n="td.org">Организация</td></tr>
+            <tr><td><code>salaryProjectId</code></td><td>string</td><td data-i18n="td.salary_project">Зарплатный проект</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>accountNumber</code></td><td>string</td><td data-i18n="td.account_num">Номер лицевого счёта</td></tr>
+            <tr><td><code>openDate</code></td><td>string (yyyy-MM-dd)</td><td data-i18n="td.open_date">Дата открытия</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.4 -->
-      <h3 class="sub" id="s3-4">3.4. Подразделение</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Подразделения</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
-      <p>Организационные подразделения компании с многоязычными наименованиями. Поддерживает чтение, создание и обновление.</p>
+      <h3 class="sub" id="s3-4" data-i18n="h3.s3_4">3.4. Подразделение</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Подразделения</code><span class="op-badges"><span class="op-badge op-badge-rw">GET</span><span class="op-badge op-badge-rw">POST</span><span class="op-badge op-badge-rw">PUT</span></span></div>
+      <p data-i18n="s3_4.desc">Организационные подразделения компании с многоязычными наименованиями. Поддерживает чтение, создание и обновление.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор подразделения</td></tr>
-            <tr><td><code>nameRu</code></td><td>string</td><td>Наименование (рус.)</td></tr>
-            <tr><td><code>nameKz</code></td><td>string</td><td>Наименование (каз.)</td></tr>
-            <tr><td><code>nameEn</code></td><td>string</td><td>Наименование (англ.)</td></tr>
-            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
-            <tr><td><code>parentDivisionId</code></td><td>string</td><td>Вышестоящее подразделение</td></tr>
-            <tr><td><code>cityNameRu</code></td><td>string</td><td>Наименование города (рус.)</td></tr>
-            <tr><td><code>cityNameKz</code></td><td>string</td><td>Наименование города (каз.)</td></tr>
-            <tr><td><code>cityNameEn</code></td><td>string</td><td>Наименование города (англ.)</td></tr>
-            <tr><td><code>addressRu</code></td><td>string</td><td>Адрес подразделения (рус.)</td></tr>
-            <tr><td><code>addressKz</code></td><td>string</td><td>Адрес подразделения (каз.)</td></tr>
-            <tr><td><code>addressEn</code></td><td>string</td><td>Адрес подразделения (англ.)</td></tr>
-            <tr><td><code>cityRu</code></td><td>string</td><td>Город (рус.)</td></tr>
-            <tr><td><code>cityKz</code></td><td>string</td><td>Город (каз.)</td></tr>
-            <tr><td><code>cityEn</code></td><td>string</td><td>Город (англ.)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.div.id">Уникальный идентификатор подразделения</td></tr>
+            <tr><td><code>nameRu</code></td><td>string</td><td data-i18n="td.name_ru">Наименование (рус.)</td></tr>
+            <tr><td><code>nameKz</code></td><td>string</td><td data-i18n="td.name_kz">Наименование (каз.)</td></tr>
+            <tr><td><code>nameEn</code></td><td>string</td><td data-i18n="td.name_en">Наименование (англ.)</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td data-i18n="td.org">Организация</td></tr>
+            <tr><td><code>parentDivisionId</code></td><td>string</td><td data-i18n="td.parent_div">Вышестоящее подразделение</td></tr>
+            <tr><td><code>cityNameRu</code></td><td>string</td><td data-i18n="td.city_name_ru">Наименование города (рус.)</td></tr>
+            <tr><td><code>cityNameKz</code></td><td>string</td><td data-i18n="td.city_name_kz">Наименование города (каз.)</td></tr>
+            <tr><td><code>cityNameEn</code></td><td>string</td><td data-i18n="td.city_name_en">Наименование города (англ.)</td></tr>
+            <tr><td><code>addressRu</code></td><td>string</td><td data-i18n="td.div_addr_ru">Адрес подразделения (рус.)</td></tr>
+            <tr><td><code>addressKz</code></td><td>string</td><td data-i18n="td.div_addr_kz">Адрес подразделения (каз.)</td></tr>
+            <tr><td><code>addressEn</code></td><td>string</td><td data-i18n="td.div_addr_en">Адрес подразделения (англ.)</td></tr>
+            <tr><td><code>cityRu</code></td><td>string</td><td data-i18n="td.city_ru">Город (рус.)</td></tr>
+            <tr><td><code>cityKz</code></td><td>string</td><td data-i18n="td.city_kz">Город (каз.)</td></tr>
+            <tr><td><code>cityEn</code></td><td>string</td><td data-i18n="td.city_en2">Город (англ.)</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.5 -->
-      <h3 class="sub" id="s3-5">3.5. Должность</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Должности</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник должностей с наименованиями на трёх языках.</p>
+      <h3 class="sub" id="s3-5" data-i18n="h3.s3_5">3.5. Должность</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Должности</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_5.desc">Справочник должностей с наименованиями на трёх языках.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор должности</td></tr>
-            <tr><td><code>nameRu</code></td><td>string</td><td>Наименование (рус.)</td></tr>
-            <tr><td><code>nameKz</code></td><td>string</td><td>Наименование (каз.)</td></tr>
-            <tr><td><code>nameEn</code></td><td>string</td><td>Наименование (англ.)</td></tr>
-            <tr><td><code>shortName</code></td><td>string</td><td>Краткое наименование</td></tr>
-            <tr><td><code>grade</code></td><td>string</td><td>Разряд (категория)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.pos.id">Уникальный идентификатор должности</td></tr>
+            <tr><td><code>nameRu</code></td><td>string</td><td data-i18n="td.name_ru">Наименование (рус.)</td></tr>
+            <tr><td><code>nameKz</code></td><td>string</td><td data-i18n="td.name_kz">Наименование (каз.)</td></tr>
+            <tr><td><code>nameEn</code></td><td>string</td><td data-i18n="td.name_en">Наименование (англ.)</td></tr>
+            <tr><td><code>shortName</code></td><td>string</td><td data-i18n="td.short_name">Краткое наименование</td></tr>
+            <tr><td><code>grade</code></td><td>string</td><td data-i18n="td.grade_cat2">Разряд (категория)</td></tr>
             <tr><td><code>businessLineFunction</code></td><td>string</td><td>Business Line / Function</td></tr>
             <tr><td><code>managementLevel</code></td><td>string</td><td>Management / Non-management</td></tr>
-            <tr><td><code>requiredSpecialty</code></td><td>string</td><td>Специальность для замещения должности</td></tr>
+            <tr><td><code>requiredSpecialty</code></td><td>string</td><td data-i18n="td.specialty">Специальность для замещения должности</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.6 -->
-      <h3 class="sub" id="s3-6">3.6. Позиция штатного расписания</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ШтатноеРасписание</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Позиции штатного расписания с привязкой к организации, подразделению и должности.</p>
+      <h3 class="sub" id="s3-6" data-i18n="h3.s3_6">3.6. Позиция штатного расписания</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ШтатноеРасписание</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_6.desc">Позиции штатного расписания с привязкой к организации, подразделению и должности.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор позиции</td></tr>
-            <tr><td><code>organizationId</code></td><td>string</td><td>Организация</td></tr>
-            <tr><td><code>divisionId</code></td><td>string</td><td>Подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>string</td><td>Должность</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование позиции</td></tr>
-            <tr><td><code>fullName</code></td><td>string</td><td>Полное наименование</td></tr>
-            <tr><td><code>salaryRate</code></td><td>decimal</td><td>Оклад / часовая ставка</td></tr>
-            <tr><td><code>unitsCount</code></td><td>decimal</td><td>Количество единиц (ставок)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.spos.id">Уникальный идентификатор позиции</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td data-i18n="td.org">Организация</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td data-i18n="td.division">Подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td data-i18n="td.position">Должность</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.pos_name">Наименование позиции</td></tr>
+            <tr><td><code>fullName</code></td><td>string</td><td data-i18n="td.full_name">Полное наименование</td></tr>
+            <tr><td><code>salaryRate</code></td><td>decimal</td><td data-i18n="td.salary_rate">Оклад / часовая ставка</td></tr>
+            <tr><td><code>unitsCount</code></td><td>decimal</td><td data-i18n="td.units_count">Количество единиц (ставок)</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.7 -->
-      <h3 class="sub" id="s3-7">3.7. График работы</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ГрафикиРаботы</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник графиков рабочего времени.</p>
+      <h3 class="sub" id="s3-7" data-i18n="h3.s3_7">3.7. График работы</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ГрафикиРаботы</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_7.desc">Справочник графиков рабочего времени.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование графика</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.gen.id">Уникальный идентификатор</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.schedule_name">Наименование графика</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.8 -->
-      <h3 class="sub" id="s3-8">3.8. Вид отпуска</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ВидыОтпусков</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник видов отпусков.</p>
+      <h3 class="sub" id="s3-8" data-i18n="h3.s3_8">3.8. Вид отпуска</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ВидыОтпусков</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_8.desc">Справочник видов отпусков.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование вида отпуска</td></tr>
-            <tr><td><code>daysPerYear</code></td><td>integer</td><td>Количество дней в год</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.gen.id">Уникальный идентификатор</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.leave_name">Наименование вида отпуска</td></tr>
+            <tr><td><code>daysPerYear</code></td><td>integer</td><td data-i18n="td.days_per_year">Количество дней в год</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.9 -->
-      <h3 class="sub" id="s3-9">3.9. Начисление</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Начисления</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник видов начислений (оплат труда).</p>
+      <h3 class="sub" id="s3-9" data-i18n="h3.s3_9">3.9. Начисление</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Начисления</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_9.desc">Справочник видов начислений (оплат труда).</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование начисления</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.gen.id">Уникальный идентификатор</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.accrual_name">Наименование начисления</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.10 -->
-      <h3 class="sub" id="s3-10">3.10. Удержание</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Удержания</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник видов удержаний из заработной платы.</p>
+      <h3 class="sub" id="s3-10" data-i18n="h3.s3_10">3.10. Удержание</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Удержания</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_10.desc">Справочник видов удержаний из заработной платы.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование удержания</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.gen.id">Уникальный идентификатор</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.deduction_name">Наименование удержания</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 3.11 -->
-      <h3 class="sub" id="s3-11">3.11. Основания увольнений</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ОснованияУвольнений</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
-      <p>Справочник оснований увольнения сотрудников.</p>
+      <h3 class="sub" id="s3-11" data-i18n="h3.s3_11">3.11. Основания увольнений</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ОснованияУвольнений</code><span class="op-badges"><span class="op-badge op-badge-ro">GET</span></span></div>
+      <p data-i18n="s3_11.desc">Справочник оснований увольнения сотрудников.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td>Уникальный идентификатор</td></tr>
-            <tr><td><code>name</code></td><td>string</td><td>Наименование</td></tr>
-            <tr><td><code>dismissalBasis</code></td><td>string</td><td>Основание увольнения (статья)</td></tr>
-            <tr><td><code>dismissalReason</code></td><td>string</td><td>Причина увольнения из организации</td></tr>
-            <tr><td><code>nameKz</code></td><td>string</td><td>Наименование (каз.)</td></tr>
-            <tr><td><code>orderTextKz</code></td><td>string</td><td>Текст для приказа (каз.)</td></tr>
-            <tr><td><code>orderTextRu</code></td><td>string</td><td>Текст для приказа (рус.)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td data-i18n="td.gen.id">Уникальный идентификатор</td></tr>
+            <tr><td><code>name</code></td><td>string</td><td data-i18n="td.name">Наименование</td></tr>
+            <tr><td><code>dismissalBasis</code></td><td>string</td><td data-i18n="td.dismissal_basis">Основание увольнения (статья)</td></tr>
+            <tr><td><code>dismissalReason</code></td><td>string</td><td data-i18n="td.dismissal_reason">Причина увольнения из организации</td></tr>
+            <tr><td><code>nameKz</code></td><td>string</td><td data-i18n="td.name_kz">Наименование (каз.)</td></tr>
+            <tr><td><code>orderTextKz</code></td><td>string</td><td data-i18n="td.order_text_kz">Текст для приказа (каз.)</td></tr>
+            <tr><td><code>orderTextRu</code></td><td>string</td><td data-i18n="td.order_text_ru">Текст для приказа (рус.)</td></tr>
           </tbody>
         </table>
       </div>
@@ -1092,110 +1106,110 @@
 
     <!-- ─────────────────────────────────── SECTION 4 -->
     <div class="section" id="s4">
-      <h2 class="sec">4. Документы (создание / обновление)</h2>
+      <h2 class="sec" data-i18n="h2.s4">4. Документы (создание / обновление)</h2>
       <p>Кадровые документы создаются через <code>POST /dt/storage/{Storage}/{ID}</code> и обновляются через <code>PUT /dt/upload/{ID}</code>. Тело запроса — JSON. Колонка <strong>Обяз.</strong> указывает, является ли поле обязательным при создании.</p>
 
       <!-- 4.1 -->
-      <h3 class="sub" id="s4-1">4.1. Приём на работу</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ПриемНаРаботу</code></div>
+      <h3 class="sub" id="s4-1" data-i18n="h3.s4_1">4.1. Приём на работу</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ПриемНаРаботу</code></div>
       <p>Оформление приёма нового сотрудника. Регистрирует условия занятости, начисления, трудовой договор и график работы.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор документа (заполнять при обновлении)</td></tr>
-            <tr><td><code>date</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата приёма на работу</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>individualId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Физическое лицо</td></tr>
-            <tr><td><code>organizationId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Организация</td></tr>
-            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Должность</td></tr>
-            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
-            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>График работы</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd">Идентификатор документа (заполнять при обновлении)</td></tr>
+            <tr><td><code>date</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.hire_date">Дата приёма на работу</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>individualId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.individual">Физическое лицо</td></tr>
+            <tr><td><code>organizationId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.org">Организация</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.division">Подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.position">Должность</td></tr>
+            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.staff_pos">Позиция штатного расписания</td></tr>
+            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.work_schedule">График работы</td></tr>
             <tr><td><code>employmentType</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Вид занятости: <code>Основное место работы</code> / <code>Внешнее совместительство</code> / <code>Внутреннее совместительство</code></td></tr>
             <tr><td><code>leaveTypes</code></td><td>array[string]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска (массив ID из справочника ВидыОтпусков)</td></tr>
             <tr><td><code>rateCount</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Количество ставок: <code>1</code> / <code>1/2</code> / <code>1/3</code> / <code>1/4</code> / <code>1/8</code> / <code>2/3</code></td></tr>
-            <tr><td><code>contractNumber</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Номер трудового договора</td></tr>
-            <tr><td><code>contractDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Дата трудового договора</td></tr>
-            <tr><td><code>acceptanceConditions</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Условия приёма</td></tr>
-            <tr><td><code>representativeBasis</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Основание представителя</td></tr>
-            <tr><td><code>probationMonths</code></td><td>integer</td><td><span class="req-no">Нет</span></td><td>Испытательный срок (мес.)</td></tr>
-            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление (ID из справочника Начисления)</td></tr>
-            <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Размер начисления</td></tr>
+            <tr><td><code>contractNumber</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.contract_num">Номер трудового договора</td></tr>
+            <tr><td><code>contractDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td data-i18n="td.contract_date">Дата трудового договора</td></tr>
+            <tr><td><code>acceptanceConditions</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accept_cond">Условия приёма</td></tr>
+            <tr><td><code>representativeBasis</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.rep_basis">Основание представителя</td></tr>
+            <tr><td><code>probationMonths</code></td><td>integer</td><td><span class="req-no">Нет</span></td><td data-i18n="td.probation">Испытательный срок (мес.)</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual_ref">Начисление (ID из справочника Начисления)</td></tr>
+            <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual_amount">Размер начисления</td></tr>
             <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Аванс: <code>Фиксированной суммой</code> / <code>Процентом от тарифа</code> / <code>Расчетом за первую половину месяца</code></td></tr>
-            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Разряд (категория)</td></tr>
-            <tr><td><code>harmfulConditions</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Вредные условия труда</td></tr>
+            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.grade_cat2">Разряд (категория)</td></tr>
+            <tr><td><code>harmfulConditions</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.hazardous">Вредные условия труда</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 4.2 -->
-      <h3 class="sub" id="s4-2">4.2. Кадровый перевод</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>КадровыйПеревод</code></div>
+      <h3 class="sub" id="s4-2" data-i18n="h3.s4_2">4.2. Кадровый перевод</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>КадровыйПеревод</code></div>
       <p>Фиксирует изменение подразделения, должности, вида занятости, графика или режима дистанционной работы.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>transferDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата перевода</td></tr>
-            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Новое подразделение</td></tr>
-            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Новая должность</td></tr>
-            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Позиция штатного расписания</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd2">Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>transferDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.transfer_date">Дата перевода</td></tr>
+            <tr><td><code>divisionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.new_div">Новое подразделение</td></tr>
+            <tr><td><code>positionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.new_pos">Новая должность</td></tr>
+            <tr><td><code>staffPositionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.staff_pos">Позиция штатного расписания</td></tr>
             <tr><td><code>employmentType</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Вид занятости</td></tr>
             <tr><td><code>remoteWorkMode</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Режим дистанционной работы: <code>Работа по месту нахождения работодателя</code> / <code>Комбинированная дистанционная работа</code> / <code>Дистанционная работа</code></td></tr>
-            <tr><td><code>leaveTypes</code></td><td>array[string]</td><td><span class="req-no">Нет</span></td><td>Виды отпуска</td></tr>
-            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
-            <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Размер начисления</td></tr>
-            <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Способ расчёта аванса</td></tr>
-            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>График работы</td></tr>
-            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Разряд (категория)</td></tr>
+            <tr><td><code>leaveTypes</code></td><td>array[string]</td><td><span class="req-no">Нет</span></td><td data-i18n="td.leave_types">Виды отпуска</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual">Начисление</td></tr>
+            <tr><td><code>accrualAmount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual_amount">Размер начисления</td></tr>
+            <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.advance_method">Способ расчёта аванса</td></tr>
+            <tr><td><code>workScheduleId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.work_schedule">График работы</td></tr>
+            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.grade_cat2">Разряд (категория)</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 4.3 -->
-      <h3 class="sub" id="s4-3">4.3. Изменение оплаты труда</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ИзменениеОплатыТруда</code></div>
+      <h3 class="sub" id="s4-3" data-i18n="h3.s4_3">4.3. Изменение оплаты труда</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ИзменениеОплатыТруда</code></div>
       <p>Изменение плановых начислений сотрудника. Позволяет скорректировать оклад, надбавки, способ расчёта аванса.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>changeDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата изменения</td></tr>
-            <tr><td><code>accruals</code></td><td>array</td><td><span class="req-no">Нет</span></td><td>Список начислений</td></tr>
-            <tr><td><code>accruals[].name</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Наименование показателя начисления</td></tr>
-            <tr><td><code>accruals[].amount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Сумма начисления</td></tr>
-            <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Способ расчёта аванса</td></tr>
-            <tr><td><code>treatAsIndexation</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Учитывать как индексацию заработка</td></tr>
-            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Разряд (категория)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd2">Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>changeDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.change_date">Дата изменения</td></tr>
+            <tr><td><code>accruals</code></td><td>array</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accruals_list">Список начислений</td></tr>
+            <tr><td><code>accruals[].name</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual_indicator">Наименование показателя начисления</td></tr>
+            <tr><td><code>accruals[].amount</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual_sum">Сумма начисления</td></tr>
+            <tr><td><code>advanceMethod</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.advance_method">Способ расчёта аванса</td></tr>
+            <tr><td><code>treatAsIndexation</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.indexation">Учитывать как индексацию заработка</td></tr>
+            <tr><td><code>grade</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.grade_cat2">Разряд (категория)</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 4.4 -->
-      <h3 class="sub" id="s4-4">4.4. Больничный лист</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>БольничныйЛист</code></div>
+      <h3 class="sub" id="s4-4" data-i18n="h3.s4_4">4.4. Больничный лист</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>БольничныйЛист</code></div>
       <p>Документ периода временной нетрудоспособности сотрудника.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц начисления</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>isContinuation</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Является продолжением листка нетрудоспособности</td></tr>
-            <tr><td><code>absencePeriodStart</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата начала периода освобождения от работы</td></tr>
-            <tr><td><code>absencePeriodEnd</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата окончания периода освобождения от работы</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd2">Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.month_accrual">Месяц начисления</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>isContinuation</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.continuation">Является продолжением листка нетрудоспособности</td></tr>
+            <tr><td><code>absencePeriodStart</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.absence_start">Дата начала периода освобождения от работы</td></tr>
+            <tr><td><code>absencePeriodEnd</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.absence_end">Дата окончания периода освобождения от работы</td></tr>
             <tr><td><code>incapacityReason</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Причина: <code>Отпуск по беременности и родам</code> / <code>Заболевание или травма</code> / <code>Профзаболевание</code> / <code>Травма на производстве</code> / <code>Карантин</code> / <code>Протезирование в стационаре</code> / <code>Долечивание в санаторно-курортных учреждениях</code> / <code>Уход за больным ребенком</code></td></tr>
-            <tr><td><code>freePosition</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Освободить ставку на период отсутствия</td></tr>
-            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
-            <tr><td><code>benefitStartDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Назначить пособие с (дата)</td></tr>
-            <tr><td><code>benefitEndDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Назначить пособие по (дата)</td></tr>
-            <tr><td><code>paymentPercent</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td>Процент оплаты</td></tr>
+            <tr><td><code>freePosition</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.free_pos_abs">Освободить ставку на период отсутствия</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual">Начисление</td></tr>
+            <tr><td><code>benefitStartDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td data-i18n="td.benefit_from">Назначить пособие с (дата)</td></tr>
+            <tr><td><code>benefitEndDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td data-i18n="td.benefit_until">Назначить пособие по (дата)</td></tr>
+            <tr><td><code>paymentPercent</code></td><td>decimal</td><td><span class="req-no">Нет</span></td><td data-i18n="td.pay_pct">Процент оплаты</td></tr>
             <tr><td><code>benefitLimit</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Ограничение пособия: <code>Общее ограничение</code> / <code>Отсутствует</code></td></tr>
             <tr><td><code>paymentTiming</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Выплата: <code>С зарплатой</code> / <code>С авансом</code> / <code>В межрасчетный период</code></td></tr>
           </tbody>
@@ -1203,41 +1217,41 @@
       </div>
 
       <!-- 4.5 -->
-      <h3 class="sub" id="s4-5">4.5. Отпуск по уходу за ребёнком</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>ОтпускПоУходуЗаРебенком</code></div>
+      <h3 class="sub" id="s4-5" data-i18n="h3.s4_5">4.5. Отпуск по уходу за ребёнком</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>ОтпускПоУходуЗаРебенком</code></div>
       <p>Оформление отпуска по уходу за ребёнком.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>startDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата начала отпуска</td></tr>
-            <tr><td><code>endDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td>Дата окончания отпуска</td></tr>
-            <tr><td><code>noSalaryDuringLeave</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Не начислять зарплату и аванс во время отпуска</td></tr>
-            <tr><td><code>freePosition</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Освободить ставку на период отпуска</td></tr>
-            <tr><td><code>changeAccruals</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td>Изменить начисления во время отпуска</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd2">Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.month">Месяц</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>startDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.leave_start">Дата начала отпуска</td></tr>
+            <tr><td><code>endDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-no">Нет</span></td><td data-i18n="td.leave_end">Дата окончания отпуска</td></tr>
+            <tr><td><code>noSalaryDuringLeave</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.no_salary">Не начислять зарплату и аванс во время отпуска</td></tr>
+            <tr><td><code>freePosition</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.free_pos_leave">Освободить ставку на период отпуска</td></tr>
+            <tr><td><code>changeAccruals</code></td><td>boolean</td><td><span class="req-no">Нет</span></td><td data-i18n="td.change_accruals">Изменить начисления во время отпуска</td></tr>
           </tbody>
         </table>
       </div>
 
       <!-- 4.6 -->
-      <h3 class="sub" id="s4-6">4.6. Увольнение</h3>
-      <div class="storage-tag"><span class="label">Storage:</span> <code>Увольнение</code></div>
+      <h3 class="sub" id="s4-6" data-i18n="h3.s4_6">4.6. Увольнение</h3>
+      <div class="storage-tag"><span class="label" data-i18n="storage.label">Storage:</span> <code>Увольнение</code></div>
       <p>Документ расторжения трудового договора. Содержит основание увольнения и расчёт компенсации отпуска.</p>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Поле JSON</th><th>Тип</th><th>Обяз.</th><th>Описание</th></tr></thead>
+          <thead><tr><th data-i18n="th.json_field">Поле JSON</th><th data-i18n="th.type">Тип</th><th data-i18n="th.required">Обяз.</th><th data-i18n="th.description">Описание</th></tr></thead>
           <tbody>
-            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Идентификатор (при обновлении)</td></tr>
-            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Месяц</td></tr>
-            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Сотрудник</td></tr>
-            <tr><td><code>dismissalDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td>Дата увольнения</td></tr>
-            <tr><td><code>dismissalBasisId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td>Основание увольнения (ID из справочника ОснованияУвольнений)</td></tr>
+            <tr><td><code>id</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.doc_id_upd2">Идентификатор (при обновлении)</td></tr>
+            <tr><td><code>month</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.month">Месяц</td></tr>
+            <tr><td><code>employeeId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.employee">Сотрудник</td></tr>
+            <tr><td><code>dismissalDate</code></td><td>string (yyyy-MM-dd)</td><td><span class="req-yes">Да</span></td><td data-i18n="td.dismissal_date">Дата увольнения</td></tr>
+            <tr><td><code>dismissalBasisId</code></td><td>string</td><td><span class="req-yes">Да</span></td><td data-i18n="td.dismissal_basis_ref">Основание увольнения (ID из справочника ОснованияУвольнений)</td></tr>
             <tr><td><code>leaveCompensation</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Компенсация отпуска: <code>Предоставить</code> / <code>Удержать</code> / <code>Не использовать</code></td></tr>
-            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Начисление</td></tr>
-            <tr><td><code>deductionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td>Удержание</td></tr>
+            <tr><td><code>accrualId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.accrual">Начисление</td></tr>
+            <tr><td><code>deductionId</code></td><td>string</td><td><span class="req-no">Нет</span></td><td data-i18n="td.deduction">Удержание</td></tr>
           </tbody>
         </table>
       </div>
@@ -1245,10 +1259,10 @@
 
     <!-- ─────────────────────────────────── SECTION 5 -->
     <div class="section" id="s5">
-      <h2 class="sec">5. Описание HTTP-методов</h2>
+      <h2 class="sec" data-i18n="h2.s5">5. Описание HTTP-методов</h2>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Метод</th><th>URL</th><th>Тело запроса</th><th>Тело ответа</th><th>Назначение</th></tr></thead>
+          <thead><tr><th data-i18n="th.method">Метод</th><th data-i18n="th.url">URL</th><th data-i18n="th.req_body">Тело запроса</th><th data-i18n="th.res_body">Тело ответа</th><th data-i18n="th.purpose">Назначение</th></tr></thead>
           <tbody>
             <tr><td><span class="method method-get">GET</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td>Нет</td><td>JSON объекта</td><td>Чтение объекта</td></tr>
             <tr><td><span class="method method-post">POST</span></td><td><code>/dt/storage/{Storage}/{ID}</code></td><td>JSON объекта</td><td>JSON с id созданного</td><td>Создание объекта</td></tr>
@@ -1260,14 +1274,14 @@
         </table>
       </div>
 
-      <h4>Параметры URL</h4>
+      <h4 data-i18n="h4.url_params">Параметры URL</h4>
       <dl class="info-grid">
-        <dt><code>{Storage}</code></dt><dd>Тип объекта, например: <code>Сотрудники</code>, <code>ПриемНаРаботу</code>, <code>Увольнение</code></dd>
-        <dt><code>{ID}</code></dt><dd>string объекта в 1С</dd>
-        <dt><code>{VolumeID}</code></dt><dd>Идентификатор тома (для файловых операций)</dd>
+        <dt data-i18n="s5.dt.storage"><code>{Storage}</code></dt><dd data-i18n="s5.storage">Тип объекта, например: <code>Сотрудники</code>, <code>ПриемНаРаботу</code>, <code>Увольнение</code></dd>
+        <dt data-i18n="s5.dt.id"><code>{ID}</code></dt><dd>string объекта в 1С</dd>
+        <dt data-i18n="s5.dt.volumeid"><code>{VolumeID}</code></dt><dd data-i18n="s5.volumeid">Идентификатор тома (для файловых операций)</dd>
       </dl>
 
-      <h4>Обязательные заголовки запроса</h4>
+      <h4 data-i18n="h4.req_headers">Обязательные заголовки запроса</h4>
       <dl class="info-grid">
         <dt>Content-Type</dt><dd><code>application/json</code></dd>
         <dt>Authorization</dt><dd><code>Basic &lt;base64(login:password)&gt;</code></dd>
@@ -1277,8 +1291,8 @@
 
     <!-- ─────────────────────────────────── SECTION 6 -->
     <div class="section" id="s6">
-      <h2 class="sec">6. Обработка ошибок</h2>
-      <p>При ошибке сервис возвращает JSON следующего вида:</p>
+      <h2 class="sec" data-i18n="h2.s6">6. Обработка ошибок</h2>
+      <p data-i18n="s6.p1">При ошибке сервис возвращает JSON следующего вида:</p>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">false</span>,
   <span class="k">"errorCode"</span>: <span class="s">"ValidationError"</span>,
@@ -1294,42 +1308,42 @@
         </div>
         <div class="error-card">
           <div class="ec">InvalidStorage</div>
-          <div class="reason">Неверный тип хранилища (Storage)</div>
-          <div class="action">→ Проверить имя объекта из спецификации</div>
+          <div class="reason" data-i18n="ec.inv_storage.reason">Неверный тип хранилища (Storage)</div>
+          <div class="action" data-i18n="ec.inv_storage.action">→ Проверить имя объекта из спецификации</div>
         </div>
         <div class="error-card">
           <div class="ec">ValidationError</div>
-          <div class="reason">Отсутствуют обязательные поля</div>
-          <div class="action">→ Добавить недостающие поля и повторить</div>
+          <div class="reason" data-i18n="ec.validation.reason">Отсутствуют обязательные поля</div>
+          <div class="action" data-i18n="ec.validation.action">→ Добавить недостающие поля и повторить</div>
         </div>
         <div class="error-card">
           <div class="ec">DuplicateDocument</div>
-          <div class="reason">Документ на период + сотрудник уже существует</div>
-          <div class="action">→ Использовать PUT для обновления</div>
+          <div class="reason" data-i18n="ec.duplicate.reason">Документ на период + сотрудник уже существует</div>
+          <div class="action" data-i18n="ec.duplicate.action">→ Использовать PUT для обновления</div>
         </div>
         <div class="error-card">
           <div class="ec">InternalError</div>
-          <div class="reason">Внутренняя ошибка 1С</div>
-          <div class="action">→ Сообщить администратору интеграции</div>
+          <div class="reason" data-i18n="ec.internal.reason">Внутренняя ошибка 1С</div>
+          <div class="action" data-i18n="ec.internal.action">→ Сообщить администратору интеграции</div>
         </div>
         <div class="error-card">
           <div class="ec">Unauthorized</div>
-          <div class="reason">Ошибка авторизации (HTTP 401)</div>
-          <div class="action">→ Проверить учётные данные</div>
+          <div class="reason" data-i18n="ec.unauth.reason">Ошибка авторизации (HTTP 401)</div>
+          <div class="action" data-i18n="ec.unauth.action">→ Проверить учётные данные</div>
         </div>
       </div>
     </div>
 
     <!-- ─────────────────────────────────── SECTION 7 -->
     <div class="section" id="s7">
-      <h2 class="sec">7. Примеры запросов и ответов</h2>
+      <h2 class="sec" data-i18n="h2.s7">7. Примеры запросов и ответов</h2>
 
-      <h3 class="sub">7.1. Получение сотрудника (GET)</h3>
-      <h4>Запрос</h4>
+      <h3 class="sub" data-i18n="h3.s7_1">7.1. Получение сотрудника (GET)</h3>
+      <h4 data-i18n="h4.request">Запрос</h4>
       <pre><span class="lang-tag">http</span><span class="m">GET</span> <span class="u">/dt/storage/Сотрудники/a1b2c3d4-0000-0000-0000-000000000001</span>
 Authorization: Basic dXNlcjpwYXNz
 Accept: application/json</pre>
-      <h4>Ответ (200 OK)</h4>
+      <h4 data-i18n="h4.response">Ответ (200 OK)</h4>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">true</span>,
   <span class="k">"id"</span>: <span class="s">"a1b2c3d4-0000-0000-0000-000000000001"</span>,
@@ -1345,8 +1359,8 @@ Accept: application/json</pre>
   <span class="k">"headcountCategory"</span>: <span class="s">"WC"</span>
 }</pre>
 
-      <h3 class="sub">7.2. Создание документа «Приём на работу» (POST)</h3>
-      <h4>Запрос</h4>
+      <h3 class="sub" data-i18n="h3.s7_2">7.2. Создание документа «Приём на работу» (POST)</h3>
+      <h4 data-i18n="h4.req">Запрос</h4>
       <pre><span class="lang-tag">http</span><span class="m">POST</span> <span class="u">/dt/storage/ПриемНаРаботу/00000000-0000-0000-0000-000000000000</span>
 Content-Type: application/json
 Authorization: Basic dXNlcjpwYXNz
@@ -1367,14 +1381,14 @@ Authorization: Basic dXNlcjpwYXNz
   <span class="k">"accrualAmount"</span>: <span class="n">350000.00</span>,
   <span class="k">"advanceMethod"</span>: <span class="s">"Расчетом за первую половину месяца"</span>
 }</pre>
-      <h4>Ответ (201 Created)</h4>
+      <h4 data-i18n="h4.response_201">Ответ (201 Created)</h4>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">true</span>,
   <span class="k">"id"</span>: <span class="s">"11111111-2222-3333-4444-555555555555"</span>,
   <span class="k">"message"</span>: <span class="s">"Документ 'Приём на работу' создан успешно"</span>
 }</pre>
 
-      <h3 class="sub">7.3. Создание документа «Увольнение» (POST)</h3>
+      <h3 class="sub" data-i18n="h3.s7_3">7.3. Создание документа «Увольнение» (POST)</h3>
       <h4>Запрос</h4>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"month"</span>: <span class="s">"2026-07-01"</span>,
@@ -1383,14 +1397,14 @@ Authorization: Basic dXNlcjpwYXNz
   <span class="k">"dismissalBasisId"</span>: <span class="s">"bb000000-0000-0000-0000-000000000099"</span>,
   <span class="k">"leaveCompensation"</span>: <span class="s">"Предоставить"</span>
 }</pre>
-      <h4>Ответ (201 Created)</h4>
+      <h4 data-i18n="h4.res">Ответ (201 Created)</h4>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">true</span>,
   <span class="k">"id"</span>: <span class="s">"22222222-3333-4444-5555-666666666666"</span>,
   <span class="k">"message"</span>: <span class="s">"Документ 'Увольнение' создан успешно"</span>
 }</pre>
 
-      <h3 class="sub">7.4. Обновление документа (PUT)</h3>
+      <h3 class="sub" data-i18n="h3.s7_4">7.4. Обновление документа (PUT)</h3>
       <h4>Запрос</h4>
       <pre><span class="lang-tag">http</span><span class="m">PUT</span> <span class="u">/dt/upload/11111111-2222-3333-4444-555555555555</span>
 Content-Type: application/json
@@ -1399,14 +1413,14 @@ Content-Type: application/json
   <span class="k">"id"</span>: <span class="s">"11111111-2222-3333-4444-555555555555"</span>,
   <span class="k">"accrualAmount"</span>: <span class="n">400000.00</span>
 }</pre>
-      <h4>Ответ (200 OK)</h4>
+      <h4 data-i18n="h4.res">Ответ (200 OK)</h4>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">true</span>,
   <span class="k">"id"</span>: <span class="s">"11111111-2222-3333-4444-555555555555"</span>,
   <span class="k">"message"</span>: <span class="s">"Документ обновлён успешно"</span>
 }</pre>
 
-      <h3 class="sub">7.5. Ошибка — отсутствует обязательное поле</h3>
+      <h3 class="sub" data-i18n="h3.s7_5">7.5. Ошибка — отсутствует обязательное поле</h3>
       <pre><span class="lang-tag">json</span>{
   <span class="k">"success"</span>: <span class="b">false</span>,
   <span class="k">"errorCode"</span>: <span class="s">"ValidationError"</span>,
@@ -1417,16 +1431,16 @@ Content-Type: application/json
 
     <!-- ─────────────────────────────────── SECTION 8 -->
     <div class="section" id="s8">
-      <h2 class="sec">8. Пользовательская документация</h2>
+      <h2 class="sec" data-i18n="h2.s8">8. Пользовательская документация</h2>
 
-      <h3 class="sub">8.1. Когда читать справочники</h3>
-      <p>Данные справочников следует считывать перед созданием кадровых документов для получения актуальных идентификаторов (string) объектов. Рекомендуется:</p>
+      <h3 class="sub" data-i18n="h3.s8_1">8.1. Когда читать справочники</h3>
+      <p data-i18n="s8.p1">Данные справочников следует считывать перед созданием кадровых документов для получения актуальных идентификаторов (string) объектов. Рекомендуется:</p>
       <ul>
         <li>кэшировать редко изменяемые справочники (Должности, Подразделения, Начисления, Графики работы);</li>
         <li>обновлять кэш по расписанию (например, ежедневно) или при обнаружении ошибки <code>ObjectNotFound</code>.</li>
       </ul>
 
-      <h3 class="sub">8.2. Порядок создания документа</h3>
+      <h3 class="sub" data-i18n="h3.s8_2">8.2. Порядок создания документа</h3>
       <ol class="steps">
         <li>Получить string нужных объектов через GET-запросы к справочникам.</li>
         <li>Сформировать тело JSON-запроса, заполнив все <strong>обязательные</strong> поля.</li>
@@ -1435,10 +1449,10 @@ Content-Type: application/json
         <li>Сохранить возвращённый <code>id</code> документа для возможного последующего обновления через PUT.</li>
       </ol>
 
-      <h3 class="sub">8.3. Правила обработки ошибок</h3>
+      <h3 class="sub" data-i18n="h3.s8_3">8.3. Правила обработки ошибок</h3>
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Ситуация</th><th>Действие</th></tr></thead>
+          <thead><tr><th data-i18n="th.situation">Ситуация</th><th data-i18n="th.action">Действие</th></tr></thead>
           <tbody>
             <tr><td><code>success = true</code></td><td>Документ создан / обновлён. Сохранить id.</td></tr>
             <tr><td><code>ValidationError</code></td><td>Добавить недостающие обязательные поля и повторить запрос.</td></tr>
@@ -1450,7 +1464,7 @@ Content-Type: application/json
         </table>
       </div>
 
-      <h3 class="sub">8.4. Контрольные правила</h3>
+      <h3 class="sub" data-i18n="h3.s8_4">8.4. Контрольные правила</h3>
       <ul>
         <li>Не создавать документы без предварительной проверки наличия сотрудника (<code>ObjectNotFound</code> при GET).</li>
         <li>Хранить <code>id</code> созданных документов в журнале обмена для последующей сверки.</li>
@@ -1462,37 +1476,37 @@ Content-Type: application/json
 
     <!-- ─────────────────────────────────── SECTION 9 -->
     <div class="section" id="s9">
-      <h2 class="sec">9. Краткая памятка</h2>
+      <h2 class="sec" data-i18n="h2.s9">9. Краткая памятка</h2>
       <div class="tbl-wrap">
         <table class="quickref">
-          <thead><tr><th>Объект</th><th>Операция</th><th>HTTP</th><th>URL</th></tr></thead>
+          <thead><tr><th data-i18n="th.object">Объект</th><th data-i18n="th.operation">Операция</th><th>HTTP</th><th data-i18n="th.url">URL</th></tr></thead>
           <tbody>
-            <tr><td>Сотрудник</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
-            <tr><td>Сотрудник</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
-            <tr><td>Сотрудник</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
-            <tr><td>Физическое лицо</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
-            <tr><td>Физическое лицо</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
-            <tr><td>Физическое лицо</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
-            <tr><td>Лицевой счёт</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
-            <tr><td>Лицевой счёт</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
-            <tr><td>Лицевой счёт</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
-            <tr><td>Подразделение</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
-            <tr><td>Подразделение</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
-            <tr><td>Подразделение</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
-            <tr><td>Должность</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Должности/{ID}</code></td></tr>
-            <tr><td>Позиция штатного расписания</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ШтатноеРасписание/{ID}</code></td></tr>
-            <tr><td>График работы</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ГрафикиРаботы/{ID}</code></td></tr>
-            <tr><td>Вид отпуска</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ВидыОтпусков/{ID}</code></td></tr>
-            <tr><td>Начисление</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Начисления/{ID}</code></td></tr>
-            <tr><td>Удержание</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Удержания/{ID}</code></td></tr>
-            <tr><td>Основание увольнения</td><td><span class="op-read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ОснованияУвольнений/{ID}</code></td></tr>
-            <tr><td>Приём на работу</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ПриемНаРаботу/{ID}</code></td></tr>
-            <tr><td>Кадровый перевод</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/КадровыйПеревод/{ID}</code></td></tr>
-            <tr><td>Изменение оплаты труда</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ИзменениеОплатыТруда/{ID}</code></td></tr>
-            <tr><td>Больничный лист</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/БольничныйЛист/{ID}</code></td></tr>
-            <tr><td>Отпуск по уходу за ребёнком</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ОтпускПоУходуЗаРебенком/{ID}</code></td></tr>
-            <tr><td>Увольнение</td><td><span class="op-create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Увольнение/{ID}</code></td></tr>
-            <tr><td>Любой документ</td><td><span class="op-update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
+            <tr><td data-i18n="td.employee">Сотрудник</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
+            <tr><td data-i18n="td.employee">Сотрудник</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Сотрудники/{ID}</code></td></tr>
+            <tr><td data-i18n="td.employee">Сотрудник</td><td><span class="op-update" data-i18n="op.update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
+            <tr><td data-i18n="td.individual">Физическое лицо</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
+            <tr><td data-i18n="td.individual">Физическое лицо</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ФизическиеЛица/{ID}</code></td></tr>
+            <tr><td data-i18n="td.individual">Физическое лицо</td><td><span class="op-update" data-i18n="op.update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
+            <tr><td>Лицевой счёт</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
+            <tr><td>Лицевой счёт</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ЛицевыеСчета/{ID}</code></td></tr>
+            <tr><td>Лицевой счёт</td><td><span class="op-update" data-i18n="op.update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
+            <tr><td data-i18n="td.division">Подразделение</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
+            <tr><td data-i18n="td.division">Подразделение</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Подразделения/{ID}</code></td></tr>
+            <tr><td data-i18n="td.division">Подразделение</td><td><span class="op-update" data-i18n="op.update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
+            <tr><td data-i18n="td.position">Должность</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Должности/{ID}</code></td></tr>
+            <tr><td data-i18n="td.staff_pos">Позиция штатного расписания</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ШтатноеРасписание/{ID}</code></td></tr>
+            <tr><td data-i18n="td.work_schedule">График работы</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ГрафикиРаботы/{ID}</code></td></tr>
+            <tr><td>Вид отпуска</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ВидыОтпусков/{ID}</code></td></tr>
+            <tr><td data-i18n="td.accrual">Начисление</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Начисления/{ID}</code></td></tr>
+            <tr><td data-i18n="td.deduction">Удержание</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/Удержания/{ID}</code></td></tr>
+            <tr><td>Основание увольнения</td><td><span class="op-read" data-i18n="op.read">Чтение</span></td><td><span class="method method-get">GET</span></td><td><code>/dt/storage/ОснованияУвольнений/{ID}</code></td></tr>
+            <tr><td>Приём на работу</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ПриемНаРаботу/{ID}</code></td></tr>
+            <tr><td>Кадровый перевод</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/КадровыйПеревод/{ID}</code></td></tr>
+            <tr><td>Изменение оплаты труда</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ИзменениеОплатыТруда/{ID}</code></td></tr>
+            <tr><td>Больничный лист</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/БольничныйЛист/{ID}</code></td></tr>
+            <tr><td>Отпуск по уходу за ребёнком</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/ОтпускПоУходуЗаРебенком/{ID}</code></td></tr>
+            <tr><td>Увольнение</td><td><span class="op-create" data-i18n="op.create">Создание</span></td><td><span class="method method-post">POST</span></td><td><code>/dt/storage/Увольнение/{ID}</code></td></tr>
+            <tr><td>Любой документ</td><td><span class="op-update" data-i18n="op.update">Обновление</span></td><td><span class="method method-put">PUT</span></td><td><code>/dt/upload/{ID}</code></td></tr>
           </tbody>
         </table>
       </div>
@@ -1500,8 +1514,8 @@ Content-Type: application/json
 
     <!-- Footer -->
     <footer>
-      <span><span class="company-name">KazUni</span> · Integration Services · © 2026</span>
-      <span>Документ сформирован: 01.07.2026 · Статус: проектная спецификация</span>
+      <span><span class="company-name">KazUni</span> · <span data-i18n="footer.services">Integration Services</span> · © 2026</span>
+      <span data-i18n="footer.date">Документ сформирован: 01.07.2026 · Статус: проектная спецификация</span>
     </footer>
 
   </div><!-- /content -->
@@ -1571,6 +1585,384 @@ Content-Type: application/json
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll(); // init
+</script>
+
+
+<script>
+// ── i18n translations ──────────────────────────────────────────────
+const EN = {
+  // Topbar
+  "topbar.title":  "ZUP Integration Service Documentation",
+  "topbar.badge":  "⚠ Project Specification",
+  // Sidebar nav
+  "nav.grp.overview":  "Overview",
+  "nav.grp.sections":  "Sections",
+  "nav.overview":      "Document Overview",
+  "nav.toc":           "Table of Contents",
+  "nav.s1":   "1. Service Purpose",
+  "nav.s2":   "2. Methods",
+  "nav.s3":   "3. Dictionaries",
+  "nav.s4":   "4. Documents",
+  "nav.s5":   "5. HTTP Methods",
+  "nav.s6":   "6. Errors",
+  "nav.s7":   "7. Examples",
+  "nav.s8":   "8. Guide",
+  "nav.s9":   "9. Quick Ref",
+  "nav.s3_1":  "3.1 Employee",
+  "nav.s3_2":  "3.2 Individual",
+  "nav.s3_3":  "3.3 Personal Account",
+  "nav.s3_4":  "3.4 Division",
+  "nav.s3_5":  "3.5 Position",
+  "nav.s3_6":  "3.6 Staffing Table",
+  "nav.s3_7":  "3.7 Work Schedule",
+  "nav.s3_8":  "3.8 Leave Type",
+  "nav.s3_9":  "3.9 Accrual",
+  "nav.s3_10": "3.10 Deduction",
+  "nav.s3_11": "3.11 Dismissal Grounds",
+  "nav.s4_1":  "4.1 Employment",
+  "nav.s4_2":  "4.2 HR Transfer",
+  "nav.s4_3":  "4.3 Salary Change",
+  "nav.s4_4":  "4.4 Sick Leave",
+  "nav.s4_5":  "4.5 Parental Leave",
+  "nav.s4_6":  "4.6 Dismissal",
+  "sidebar.footer": "© 2026 KazUni · v1.0",
+  // Cover
+  "cover.label": "KazUni · Technical Specification",
+  "cover.title": "ZUP Integration Service Documentation<br>HR Documents",
+  "cover.sub":   "Read, create and update HR objects via the DataTransfer HTTP service (1C:ZUP)",
+  "cover.meta.service":  "Service",
+  "cover.meta.config":   "Configuration",
+  "cover.meta.format":   "Format",
+  "cover.meta.auth":     "Authorization",
+  "cover.meta.date":     "Document Date",
+  "cover.meta.status":   "Status",
+  "cover.dd.config":     "ZUP for Kazakhstan, ed. 3.1",
+  "cover.dd.auth":       "Basic Auth / token",
+  "cover.dd.status":     "Project Specification",
+  // Banner
+  "banner.strong": "⚠ Status: project specification.",
+  "banner.text":   "The service is under development. This document is shared with partners for analysis and data composition approval.",
+  // TOC
+  "toc.title":  "Table of Contents",
+  "toc.s1":     "Service Purpose",
+  "toc.s2":     "HTTP Methods Overview",
+  "toc.s3":     "Dictionaries (read / write)",
+  "toc.s3_1":   "3.1 Employee",
+  "toc.s3_2":   "3.2 Individual",
+  "toc.s3_3":   "3.3 Personal Account",
+  "toc.s3_4":   "3.4 Division",
+  "toc.s3_5":   "3.5 Position",
+  "toc.s3_6":   "3.6 Staffing Table Position",
+  "toc.s3_7":   "3.7 Work Schedule",
+  "toc.s3_8":   "3.8 Leave Type",
+  "toc.s3_9":   "3.9 Accrual",
+  "toc.s3_10":  "3.10 Deduction",
+  "toc.s3_11":  "3.11 Dismissal Grounds",
+  "toc.s4":     "Documents (create / update)",
+  "toc.s4_1":   "4.1 Employment",
+  "toc.s4_2":   "4.2 HR Transfer",
+  "toc.s4_3":   "4.3 Salary Change",
+  "toc.s4_4":   "4.4 Sick Leave",
+  "toc.s4_5":   "4.5 Parental Leave",
+  "toc.s4_6":   "4.6 Dismissal",
+  "toc.s5":     "HTTP Methods Description",
+  "toc.s6":     "Error Handling",
+  "toc.s7":     "Request & Response Examples",
+  "toc.s8":     "User Documentation",
+  "toc.s9":     "Quick Reference",
+  // Headings h2
+  "h2.s1": "1. Service Purpose",
+  "h2.s2": "2. HTTP Methods Overview",
+  "h2.s3": "3. Dictionaries (read / write)",
+  "h2.s4": "4. Documents (create / update)",
+  "h2.s5": "5. HTTP Methods Description",
+  "h2.s6": "6. Error Handling",
+  "h2.s7": "7. Request &amp; Response Examples",
+  "h2.s8": "8. User Documentation",
+  "h2.s9": "9. Quick Reference",
+  // Headings h3
+  "h3.s3_1":  "3.1. Employee",
+  "h3.s3_2":  "3.2. Individual",
+  "h3.s3_3":  "3.3. Personal Account",
+  "h3.s3_4":  "3.4. Division",
+  "h3.s3_5":  "3.5. Position",
+  "h3.s3_6":  "3.6. Staffing Table Position",
+  "h3.s3_7":  "3.7. Work Schedule",
+  "h3.s3_8":  "3.8. Leave Type",
+  "h3.s3_9":  "3.9. Accrual",
+  "h3.s3_10": "3.10. Deduction",
+  "h3.s3_11": "3.11. Dismissal Grounds",
+  "h3.s4_1":  "4.1. Employment",
+  "h3.s4_2":  "4.2. HR Transfer",
+  "h3.s4_3":  "4.3. Salary Change",
+  "h3.s4_4":  "4.4. Sick Leave",
+  "h3.s4_5":  "4.5. Parental Leave",
+  "h3.s4_6":  "4.6. Dismissal",
+  "h3.s7_1":  "7.1. Get Employee (GET)",
+  "h3.s7_2":  "7.2. Create Employment Document (POST)",
+  "h3.s7_3":  "7.3. Create Dismissal Document (POST)",
+  "h3.s7_4":  "7.4. Update Document (PUT)",
+  "h3.s7_5":  "7.5. Error — Required Field Missing",
+  "h3.s8_1":  "8.1. When to Read Dictionaries",
+  "h3.s8_2":  "8.2. Document Creation Order",
+  "h3.s8_3":  "8.3. Error Handling Rules",
+  "h3.s8_4":  "8.4. Validation Rules",
+  // h4
+  "h4.url_params":   "URL Parameters",
+  "h4.req_headers":  "Required Request Headers",
+  "h4.req":          "Request",
+  "h4.res":          "Response",
+  // Table headers
+  "th.json_field":   "JSON Field",
+  "th.type":         "Type",
+  "th.required":     "Req.",
+  "th.description":  "Description",
+  "th.http_method":  "HTTP Method",
+  "th.url_template": "URL Template",
+  "th.operation":    "Operation",
+  "th.purpose":      "Purpose",
+  "th.method":       "Method",
+  "th.url":          "URL",
+  "th.req_body":     "Request Body",
+  "th.res_body":     "Response Body",
+  "th.object":       "Object",
+  "th.situation":    "Situation",
+  "th.action":       "Action",
+  // Section 1
+  "s1.p1":  "The service is designed for <strong>bidirectional HR data exchange</strong> between external systems (CRM, corporate portals, HR systems) and the <strong>Payroll and HR Management for Kazakhstan</strong> configuration (1C:ZUP, ed. 3.1).",
+  "s1.p2":  "The service will provide:",
+  "s1.li1": "<strong>Creation</strong> of HR documents: employment, HR transfer, salary change, sick leave, parental leave, dismissal;",
+  "s1.li2": "<strong>Update</strong> of previously created HR documents.",
+  "s1.ig.source":   "Data Source",
+  "s1.ig.consumer": "Data Consumer",
+  "s1.ig.url":      "Service Base URL",
+  "s1.ig.format":   "Request / Response Body Format",
+  "s1.ig.encoding": "Encoding",
+  "s1.dd.source":   "External system (CRM, portal, HR system)",
+  "s1.dd.consumer": "1C:ZUP for Kazakhstan, ed. 3.1",
+  // Section 2
+  "s2.p1": "The planned HTTP service will provide the following endpoints:",
+  "s2.p2": "The <code>{Storage}</code> parameter defines the object type (dictionary or document). Values are listed in sections 3–4.",
+  "op.read":     "Read",
+  "op.create":   "Create",
+  "op.update":   "Update",
+  "op.download": "Download",
+  "op.volume":   "Volume File",
+  "op.upload":   "Upload",
+  "s2.purpose.get":         "Get object by type and identifier",
+  "s2.purpose.post":        "Create a new object",
+  "s2.purpose.put":         "Update an existing object by ID",
+  "s2.purpose.download":    "Download a file object",
+  "s2.purpose.volume_get":  "Get file by volume and path",
+  "s2.purpose.volume_post": "Upload a file",
+  // Section 3
+  "s3.p1":  "Dictionaries are split into two groups by available operations. Object identifier is passed in the <code>{ID}</code> parameter as a string.",
+  "s3.li1": "<strong>Write (GET + POST + PUT):</strong> Employee, Individual, Personal Account, Division — support read, create and update.",
+  "s3.li2": "<strong>Read only (GET):</strong> Position, Staffing Table, Work Schedule, Leave Type, Accrual, Deduction, Dismissal Grounds.",
+  "storage.label": "Storage:",
+  // Section 3 descriptions
+  "s3_1.desc": "Main employee directory. Supports read, create and update.",
+  "s3_2.desc": "Stores personal data of an individual regardless of employment status. Supports read, create and update.",
+  "s3_3.desc": "Employee personal accounts within salary projects. Supports read, create and update.",
+  "s3_4.desc": "Company organisational divisions with multilingual names. Supports read, create and update.",
+  "s3_5.desc": "Position dictionary with names in three languages.",
+  "s3_6.desc": "Staffing table positions linked to organisation, division and position.",
+  "s3_7.desc": "Work schedule dictionary.",
+  "s3_8.desc": "Leave type dictionary.",
+  "s3_9.desc": "Accrual (pay type) dictionary.",
+  "s3_10.desc": "Salary deduction type dictionary.",
+  "s3_11.desc": "Dismissal grounds dictionary.",
+  // Section 4
+  "s4.p1": "HR documents are created via <code>POST /dt/storage/{Storage}/{ID}</code> and updated via <code>PUT /dt/upload/{ID}</code>. Request body is JSON. The <strong>Req.</strong> column indicates whether the field is mandatory when creating.",
+  // Field descriptions
+  "td.emp.id":            "Unique employee identifier in 1C",
+  "td.ind.id":            "Unique individual identifier",
+  "td.acc.id":            "Unique personal account identifier",
+  "td.div.id":            "Unique division identifier",
+  "td.pos.id":            "Unique position identifier",
+  "td.spos.id":           "Unique staffing position identifier",
+  "td.gen.id":            "Unique identifier",
+  "td.emp.personnel_num": "Personnel number",
+  "td.lastname":          "Last name",
+  "td.firstname":         "First name",
+  "td.middlename":        "Middle name",
+  "td.fullname_en":       "Full name in English",
+  "td.address_en":        "Address in English",
+  "td.birthdate":         "Date of birth",
+  "td.gender_full":       "Gender (Male / Female)",
+  "td.gender":            "Gender",
+  "td.disability":        "Disability information",
+  "td.war_veteran":       "WWII veteran status information",
+  "td.pension_info":      "Pension provision information",
+  "td.iin_full":          "IIN (Individual Identification Number)",
+  "td.iin":               "IIN",
+  "td.individual_ref":    "Reference to individual record",
+  "td.manager":           "Direct manager (employee ID)",
+  "td.manager_email":     "Direct manager email",
+  "td.emp_type":          "Employee type",
+  "td.citizenship":       "Citizenship",
+  "td.nationality":       "Nationality",
+  "td.account_ref":       "Reference to personal account",
+  "td.tax_status":        "Taxpayer status",
+  "td.social_ins":        "Subject to social insurance",
+  "td.pension_rights":    "Entitled to pension provision",
+  "td.med_ins":           "Subject to social health insurance",
+  "td.id_doc_type":       "Identity document type",
+  "td.doc_series":        "Document series",
+  "td.doc_number":        "Document number",
+  "td.doc_issued_by":     "Issued by",
+  "td.doc_issue_date":    "Issue date",
+  "td.doc_expiry":        "Expiry date",
+  "td.doc_valid_from":    "Document details valid from",
+  "td.iit_deductions":    "IIT deduction types",
+  "td.military":          "Military registration",
+  "td.education":         "Education",
+  "td.gender_en":         "Gender in English",
+  "td.birthplace":        "Place of birth",
+  "td.city_en":           "City in English",
+  "td.access_group":      "Individual access group",
+  "td.org":               "Organization",
+  "td.salary_project":    "Salary project",
+  "td.employee":          "Employee",
+  "td.account_num":       "Personal account number",
+  "td.open_date":         "Opening date",
+  "td.name_ru":           "Name (Russian)",
+  "td.name_kz":           "Name (Kazakh)",
+  "td.name_en":           "Name (English)",
+  "td.parent_div":        "Parent division",
+  "td.city_name_ru":      "City name (Russian)",
+  "td.city_name_kz":      "City name (Kazakh)",
+  "td.city_name_en":      "City name (English)",
+  "td.div_addr_ru":       "Division address (Russian)",
+  "td.div_addr_kz":       "Division address (Kazakh)",
+  "td.div_addr_en":       "Division address (English)",
+  "td.city_ru":           "City (Russian)",
+  "td.city_kz":           "City (Kazakh)",
+  "td.city_en2":          "City (English)",
+  "td.short_name":        "Short name",
+  "td.grade_cat":         "Grade (category)",
+  "td.grade_cat2":        "Grade (category)",
+  "td.specialty":         "Specialty required for the position",
+  "td.pos_name":          "Position name",
+  "td.full_name":         "Full name",
+  "td.salary_rate":       "Salary / hourly rate",
+  "td.units_count":       "Number of units (rates)",
+  "td.schedule_name":     "Schedule name",
+  "td.leave_name":        "Leave type name",
+  "td.days_per_year":     "Days per year",
+  "td.accrual_name":      "Accrual name",
+  "td.deduction_name":    "Deduction name",
+  "td.name":              "Name",
+  "td.dismissal_basis":   "Dismissal ground (article)",
+  "td.dismissal_reason":  "Reason for dismissal from organization",
+  "td.order_text_kz":     "Order text (Kazakh)",
+  "td.order_text_ru":     "Order text (Russian)",
+  "td.doc_id_upd":        "Document identifier (fill in when updating)",
+  "td.doc_id_upd2":       "Identifier (when updating)",
+  "td.hire_date":         "Employment date",
+  "td.individual":        "Individual",
+  "td.division":          "Division",
+  "td.position":          "Position",
+  "td.staff_pos":         "Staffing table position",
+  "td.work_schedule":     "Work schedule",
+  "td.contract_num":      "Employment contract number",
+  "td.contract_date":     "Employment contract date",
+  "td.accept_cond":       "Acceptance conditions",
+  "td.rep_basis":         "Representative basis",
+  "td.probation":         "Probation period (months)",
+  "td.accrual_ref":       "Accrual (ID from Accruals dictionary)",
+  "td.accrual":           "Accrual",
+  "td.accrual_amount":    "Accrual amount",
+  "td.hazardous":         "Hazardous working conditions",
+  "td.transfer_date":     "Transfer date",
+  "td.new_div":           "New division",
+  "td.new_pos":           "New position",
+  "td.leave_types":       "Leave types",
+  "td.advance_method":    "Advance calculation method",
+  "td.change_date":       "Change date",
+  "td.accruals_list":     "Accruals list",
+  "td.accrual_indicator": "Accrual indicator name",
+  "td.accrual_sum":       "Accrual amount",
+  "td.indexation":        "Treat as salary indexation",
+  "td.month_accrual":     "Accrual month",
+  "td.month":             "Month",
+  "td.continuation":      "Is continuation of incapacity certificate",
+  "td.absence_start":     "Start date of work release period",
+  "td.absence_end":       "End date of work release period",
+  "td.free_pos_abs":      "Release position for absence period",
+  "td.benefit_from":      "Assign benefit from (date)",
+  "td.benefit_until":     "Assign benefit until (date)",
+  "td.pay_pct":           "Payment percentage",
+  "td.payment_timing":    "Payment timing",
+  "td.leave_start":       "Leave start date",
+  "td.leave_end":         "Leave end date",
+  "td.no_salary":         "Do not accrue salary and advance during leave",
+  "td.free_pos_leave":    "Release position for leave period",
+  "td.change_accruals":   "Change accruals during leave",
+  "td.dismissal_date":    "Dismissal date",
+  "td.dismissal_basis_ref": "Dismissal ground (ID from DismissalGrounds dictionary)",
+  "td.deduction":         "Deduction",
+  // Section 5
+  "s5.dt.storage":  "{Storage}",
+  "s5.dt.id":       "{ID}",
+  "s5.dt.volumeid": "{VolumeID}",
+  "s5.dt.ct":       "Content-Type",
+  "s5.dt.auth":     "Authorization",
+  "s5.dt.accept":   "Accept",
+  "s5.storage":     "Object type, e.g.:",
+  "s5.id":          "Object GUID in 1C",
+  "s5.volumeid":    "Volume identifier (for file operations)",
+  // Section 6 error cards
+  "ec.not_found.reason":   "Object with specified ID not found",
+  "ec.not_found.action":   "→ Verify GUID is correct",
+  "ec.inv_storage.reason": "Invalid storage type (Storage parameter)",
+  "ec.inv_storage.action": "→ Check object name in specification",
+  "ec.validation.reason":  "Missing required fields",
+  "ec.validation.action":  "→ Add missing fields and retry",
+  "ec.duplicate.reason":   "Document for this period + employee already exists",
+  "ec.duplicate.action":   "→ Use PUT to update",
+  "ec.internal.reason":    "Internal 1C error",
+  "ec.internal.action":    "→ Notify the integration administrator",
+  "ec.unauth.reason":      "Authorization error (HTTP 401)",
+  "ec.unauth.action":      "→ Check credentials",
+  // Section 8
+  "s6.p1": "On error the service returns the following JSON:",
+  "s8.p1": "Dictionary data should be read before creating HR documents to obtain current object identifiers. It is recommended to cache infrequently changed dictionaries and refresh daily or upon <code>ObjectNotFound</code>.",
+  // Operations in quickref
+  "op.read":   "Read",
+  "op.create": "Create",
+  "op.update": "Update",
+  // Footer
+  "footer.services": "Integration Services",
+  "footer.date":     "Generated: 01.07.2026 · Status: project specification",
+};
+
+// RU originals cached at init
+const RU = {};
+
+function setLang(lang) {
+  // cache RU on first EN switch
+  if (lang === 'en' && Object.keys(RU).length === 0) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      RU[el.dataset.i18n] = el.innerHTML;
+    });
+  }
+  const T = lang === 'en' ? EN : RU;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[key] !== undefined) el.innerHTML = T[key];
+  });
+  document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+// restore saved language
+(function() {
+  const saved = localStorage.getItem('lang');
+  if (saved === 'en') { setTimeout(() => setLang('en'), 0); }
+})();
 </script>
 
 </body>
