@@ -38,6 +38,8 @@
       color: var(--text);
       background: var(--bg);
       display: flex;
+      width: 100%;
+      max-width: 100%;
       min-height: 100vh;
       min-height: 100svh;
       overflow-x: hidden;
@@ -249,8 +251,12 @@
     #main {
       margin-left: 276px;
       flex: 1;
+      width: calc(100% - 276px);
+      max-width: calc(100% - 276px);
+      min-width: 0;           /* prevent flex blowout */
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     /* ── Top header bar ─────────────────────────────────────────── */
@@ -266,8 +272,17 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 8px rgba(0,0,0,.07);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
     }
-    #topbar .doc-title { font-size: 16px; font-weight: 700; color: var(--blue); }
+    #topbar .doc-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blue);
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
     #topbar .badge {
       font-size: 11px;
       font-weight: 600;
@@ -281,7 +296,9 @@
     /* ── Content area ───────────────────────────────────────────── */
     #content {
       padding: 40px 48px 80px;
+      width: min(100%, 1050px);
       max-width: 1050px;
+      min-width: 0;
     }
 
     /* ── Cover block ────────────────────────────────────────────── */
@@ -293,6 +310,7 @@
       margin-bottom: 32px;
       position: relative;
       overflow: hidden;
+      max-width: 100%;
     }
     .cover::before {
       content: '';
@@ -315,11 +333,16 @@
     .cover .sub { font-size: 14px; color: rgba(255,255,255,.70); margin-bottom: 24px; }
     .cover-meta {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px 28px;
       font-size: 12px;
     }
     .cover-meta dt { color: rgba(255,255,255,.50); font-weight: 500; }
+    .cover-meta dt,
+    .cover-meta dd {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
     .cover-meta dd { color: rgba(255,255,255,.90); }
 
     /* ── Status banner ──────────────────────────────────────────── */
@@ -332,6 +355,8 @@
       margin-bottom: 28px;
       font-size: 13px;
       color: #5D4037;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
     .status-banner strong { color: #E65100; }
 
@@ -391,6 +416,8 @@
       margin-bottom: 20px;
       background: var(--white);
       box-shadow: var(--shadow);
+      max-width: 100%;
+      min-width: 0;
     }
     .info-grid dt {
       padding: 10px 16px;
@@ -434,6 +461,7 @@
       margin-bottom: 20px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      max-width: 100%;
     }
     table {
       width: 100%;
@@ -503,6 +531,7 @@
       line-height: 1.7;
       margin: 10px 0 18px;
       position: relative;
+      max-width: 100%;
     }
     pre .lang-tag {
       position: absolute;
@@ -761,6 +790,10 @@
 
       /* main: no left margin when sidebar is a drawer */
       #main { margin-left: 0 !important; }
+      #main {
+        width: 100%;
+        max-width: 100%;
+      }
 
       /* topbar: 3-column grid — hamburger | title | lang */
       #topbar {
@@ -771,6 +804,8 @@
         padding: 0 12px 0 4px;
         padding-top: env(safe-area-inset-top, 0px);
         height: 56px;
+        width: 100%;
+        max-width: 100%;
       }
       #topbar .doc-title {
         font-size: 13px;
@@ -804,7 +839,7 @@
       .cover { padding: 24px 18px; margin-bottom: 20px; }
       .cover h1 { font-size: 20px; }
       .cover .sub { font-size: 13px; margin-bottom: 16px; }
-      .cover-meta { grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+      .cover-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
 
       /* headings */
       h2.sec { font-size: 18px; scroll-margin-top: 64px; }
