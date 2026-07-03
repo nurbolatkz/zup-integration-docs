@@ -36,6 +36,7 @@
       background: var(--bg);
       display: flex;
       min-height: 100vh;
+      min-height: 100svh;
     }
 
     /* ── Sidebar nav ────────────────────────────────────────────── */
@@ -43,7 +44,9 @@
       position: fixed;
       top: 0; left: 0;
       width: 276px;
-      height: 100vh;
+      height: 100vh;     /* fallback */
+      height: 100svh;    /* Safari ≥ 15.4 – excludes browser chrome */
+      height: 100dvh;    /* Chrome / Firefox dynamic viewport */
       background: #011F5B;   /* deeper navy */
       color: var(--white);
       display: flex;
@@ -109,7 +112,7 @@
       max-height: 0;
       transition: max-height .28s cubic-bezier(.4,0,.2,1);
     }
-    .nav-group.open .nav-group-children { max-height: 600px; }
+    .nav-group.open .nav-group-children { max-height: 1200px; }
 
     /* ── top-level links ── */
     #sidebar nav a {
@@ -340,7 +343,7 @@
       border-bottom: 2px solid var(--gold);
       padding-bottom: 8px;
       margin: 0 0 20px;
-      scroll-margin-top: 80px;
+      scroll-margin-top: 72px;
     }
 
     h3.sub {
@@ -348,7 +351,7 @@
       font-weight: 700;
       color: var(--blue-mid);
       margin: 28px 0 10px;
-      scroll-margin-top: 80px;
+      scroll-margin-top: 72px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -631,21 +634,41 @@
     }
     footer .company-name { font-weight: 700; color: var(--blue); }
 
+    /* ── Sidebar close button (mobile only) ────────────────────── */
+    #sidebar-close {
+      display: none;
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    #sidebar-close:hover { background: rgba(255,255,255,.16); }
+    .sidebar-logo { position: relative; }
+
     /* ── Hamburger button ───────────────────────────────────────── */
     #ham-btn {
       display: none;
       align-items: center;
       justify-content: center;
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       border: none;
       background: none;
       cursor: pointer;
-      border-radius: 8px;
-      padding: 6px;
+      border-radius: 10px;
+      padding: 8px;
       flex-shrink: 0;
       transition: background .15s;
+      -webkit-tap-highlight-color: transparent;
     }
-    #ham-btn:hover { background: rgba(0,61,165,.08); }
+    #ham-btn:hover, #ham-btn:active { background: rgba(0,61,165,.10); }
     #ham-btn svg { display: block; }
 
     /* ── Overlay backdrop ───────────────────────────────────────── */
@@ -653,130 +676,181 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(1,31,91,.45);
+      background: rgba(1,31,91,.52);
       z-index: 90;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       opacity: 0;
       transition: opacity .25s;
+      -webkit-tap-highlight-color: transparent;
     }
-    #sidebar-overlay.visible {
-      opacity: 1;
+    #sidebar-overlay.visible { opacity: 1; }
+
+    /* ── Body scroll-lock class (applied via JS) ─────────────────── */
+    body.sidebar-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
     }
 
-    /* ── Responsive ─────────────────────────────────────────────── */
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+    ════════════════════════════════════════════════════════════ */
 
-    /* ---- Tablet + Mobile: sidebar becomes a drawer ---- */
+    /* ── TABLET + MOBILE  (≤ 900px) ─────────────────────────────── */
     @media (max-width: 900px) {
+
+      /* show controls */
       #ham-btn { display: flex; }
       #sidebar-overlay { display: block; }
+      #sidebar-close { display: flex; }
 
-      /* sidebar slides off-screen by default */
+      /* sidebar: hidden drawer by default */
       #sidebar {
         transform: translateX(-100%);
-        transition: transform .28s cubic-bezier(.4,0,.2,1),
-                    box-shadow .28s;
+        transition: transform .3s cubic-bezier(.4,0,.2,1),
+                    box-shadow .3s;
         box-shadow: none;
+        /* Use smallest viewport height so the bar NEVER clips at the bottom */
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+        width: min(280px, 80vw);
       }
       #sidebar.drawer-open {
         transform: translateX(0);
-        box-shadow: 6px 0 32px rgba(0,0,0,.35);
+        box-shadow: 8px 0 40px rgba(0,0,0,.40);
       }
 
+      /* sidebar-scroll must fill remaining space without overflow */
+      #sidebar-scroll {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+      }
+
+      /* main takes full width */
       #main { margin-left: 0; }
 
+      /* ── Topbar: grid layout guarantees all 3 zones space ── */
       #topbar {
-        padding: 0 16px 0 12px;
-        height: 56px;
+        display: grid;
+        grid-template-columns: 52px 1fr auto;
+        align-items: center;
+        padding: 0 12px 0 4px;
+        height: 54px;
+        gap: 4px;
       }
       #topbar .doc-title {
-        font-size: 13.5px;
+        font-size: 13px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 220px;
+        text-align: center;
+        color: var(--blue);
+        font-weight: 700;
       }
+      /* right zone: badge hidden, lang-sw stays */
+      #topbar .badge { display: none; }
+      /* the wrapper div around badge+lang-sw */
+      #topbar > div:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .lang-sw { margin-left: 0; }
 
+      /* ── Content ── */
       #content {
-        padding: 24px 20px 64px;
+        padding: 20px 18px 72px;
         max-width: 100%;
       }
 
-      .cover {
-        padding: 28px 24px;
-        margin-bottom: 20px;
-      }
+      /* ── Cover ── */
+      .cover { padding: 28px 22px; margin-bottom: 20px; }
       .cover h1 { font-size: 20px; }
-      .cover .sub { font-size: 13px; }
-      .cover-meta {
-        grid-template-columns: 1fr 1fr;
-        gap: 6px 18px;
-      }
+      .cover .sub { font-size: 13px; margin-bottom: 18px; }
+      .cover-meta { grid-template-columns: 1fr 1fr; gap: 6px 16px; }
 
-      .error-grid { grid-template-columns: 1fr 1fr; }
+      /* ── Sections ── */
+      h2.sec { font-size: 18px; scroll-margin-top: 62px; }
+      h3.sub { font-size: 14px; scroll-margin-top: 62px; }
+
+      /* ── Error grid: 2 cols ── */
+      .error-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+      /* ── TOC: single column ── */
       .toc { columns: 1; }
 
-      .storage-tag {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
+      /* ── Storage tag: wrap ── */
+      .storage-tag { flex-wrap: wrap; }
 
-      h2.sec { font-size: 18px; }
-      h3.sub { font-size: 14px; }
-
-      footer {
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-      }
+      /* ── Footer: stacked ── */
+      footer { flex-direction: column; gap: 6px; text-align: center; }
     }
 
-    /* ---- Mobile only: < 600px ---- */
+    /* ── MOBILE ONLY  (≤ 600px) ─────────────────────────────────── */
     @media (max-width: 600px) {
-      #topbar .doc-title {
-        font-size: 12.5px;
-        max-width: 150px;
-      }
-      #topbar .badge { display: none; }
 
-      #content { padding: 16px 14px 56px; }
-
-      .cover {
-        padding: 22px 18px;
-        border-radius: 6px;
+      /* topbar: even more compact */
+      #topbar {
+        grid-template-columns: 48px 1fr auto;
+        padding: 0 10px 0 2px;
+        height: 50px;
       }
-      .cover h1 { font-size: 17px; line-height: 1.3; }
+      #topbar .doc-title { font-size: 12px; }
+      .lang-sw button { padding: 3px 9px; font-size: 10.5px; }
+
+      /* content */
+      #content { padding: 14px 12px 60px; }
+
+      /* cover */
+      .cover { padding: 20px 16px; border-radius: 8px; }
+      .cover h1 { font-size: 16px; line-height: 1.3; }
       .cover .sub { font-size: 12px; }
-      .cover-meta {
-        grid-template-columns: 1fr;
-        gap: 4px 0;
-      }
       .cover-label { font-size: 10.5px; }
+      .cover-meta { grid-template-columns: 1fr; gap: 4px 0; }
 
+      /* error cards: stack */
       .error-grid { grid-template-columns: 1fr; }
 
-      table { font-size: 12px; }
-      thead th { padding: 8px 10px; font-size: 11px; }
-      tbody td { padding: 7px 10px; }
-
-      h2.sec { font-size: 16px; }
-      h3.sub { font-size: 13.5px; }
+      /* headings */
+      h2.sec { font-size: 16px; scroll-margin-top: 58px; }
+      h3.sub { font-size: 13.5px; scroll-margin-top: 58px; }
       h4 { font-size: 12px; }
 
-      .toc { padding: 14px 16px; }
+      /* toc */
+      .toc { padding: 14px 14px; }
       .toc ol { font-size: 12px; }
 
-      pre { font-size: 11.5px; padding: 14px 14px; }
+      /* tables */
+      table { font-size: 12px; }
+      thead th { padding: 8px 8px; font-size: 10.5px; white-space: normal; }
+      tbody td { padding: 7px 8px; }
 
-      .info-grid dt, .info-grid dd { font-size: 12px; padding: 8px 12px; }
+      /* code */
+      pre { font-size: 11px; padding: 12px 12px; }
 
-      .lang-sw button { padding: 4px 10px; font-size: 11px; }
+      /* info-grid: stack label above value on tiny screens */
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-grid dt {
+        font-size: 11px;
+        padding: 7px 12px 2px;
+        border-bottom: none;
+      }
+      .info-grid dd {
+        font-size: 12px;
+        padding: 2px 12px 7px;
+      }
     }
 
+    /* ── PRINT ───────────────────────────────────────────────────── */
     @media print {
-      #sidebar, #topbar { display: none; }
+      #sidebar, #topbar, #sidebar-overlay { display: none !important; }
       #main { margin-left: 0; }
-      #content { padding: 0; }
-      pre { background: #f4f4f4; color: #222; }
+      #content { padding: 0; max-width: 100%; }
+      pre { background: #f4f4f4 !important; color: #222 !important; }
     }
 
     /* ── Language switcher ─────────────── */
@@ -796,6 +870,7 @@
 <!-- ═══════════════════════════════════════════════════════════════ SIDEBAR -->
 <aside id="sidebar">
   <div class="sidebar-logo">
+    <button id="sidebar-close" aria-label="Close menu" onclick="closeSidebar()"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2l14 14M16 2L2 16" stroke="rgba(255,255,255,.6)" stroke-width="2.2" stroke-linecap="round"/></svg></button>
     <div class="kz-icon">KU</div>
     <div class="company">KazUni</div>
     <div class="tagline">Integration Services</div>
@@ -2102,23 +2177,37 @@ function setLang(lang) {
 })();
 
 // ── Sidebar drawer (mobile/tablet) ────────────────────────────────
-function toggleSidebar() {
-  const sidebar  = document.getElementById('sidebar');
-  const overlay  = document.getElementById('sidebar-overlay');
-  const isOpen   = sidebar.classList.contains('drawer-open');
-  if (isOpen) {
-    closeSidebar();
-  } else {
-    sidebar.classList.add('drawer-open');
-    overlay.classList.add('visible');
-    document.body.style.overflow = 'hidden';
-  }
+// ── Sidebar drawer ────────────────────────────────────────────────
+let _scrollY = 0;
+
+function openSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  // iOS scroll-lock: record position and fix body
+  _scrollY = window.scrollY;
+  document.body.classList.add('sidebar-open');
+  document.body.style.top = -_scrollY + 'px';
+  sidebar.classList.add('drawer-open');
+  overlay.classList.add('visible');
 }
 
 function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('drawer-open');
-  document.getElementById('sidebar-overlay').classList.remove('visible');
-  document.body.style.overflow = '';
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  sidebar.classList.remove('drawer-open');
+  overlay.classList.remove('visible');
+  // iOS scroll-lock: restore scroll position
+  document.body.classList.remove('sidebar-open');
+  document.body.style.top = '';
+  window.scrollTo(0, _scrollY);
+}
+
+function toggleSidebar() {
+  if (document.getElementById('sidebar').classList.contains('drawer-open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
 }
 
 // Close sidebar when any nav link is clicked on mobile
@@ -2133,12 +2222,13 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeSidebar();
 });
 
-// Re-open sidebar on resize if desktop
+// On resize to desktop: make sure drawer state is clean
 window.addEventListener('resize', () => {
   if (window.innerWidth > 900) {
     document.getElementById('sidebar').classList.remove('drawer-open');
     document.getElementById('sidebar-overlay').classList.remove('visible');
-    document.body.style.overflow = '';
+    document.body.classList.remove('sidebar-open');
+    document.body.style.top = '';
   }
 });
 </script>
