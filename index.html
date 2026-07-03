@@ -631,15 +631,145 @@
     }
     footer .company-name { font-weight: 700; color: var(--blue); }
 
+    /* ── Hamburger button ───────────────────────────────────────── */
+    #ham-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 6px;
+      flex-shrink: 0;
+      transition: background .15s;
+    }
+    #ham-btn:hover { background: rgba(0,61,165,.08); }
+    #ham-btn svg { display: block; }
+
+    /* ── Overlay backdrop ───────────────────────────────────────── */
+    #sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(1,31,91,.45);
+      z-index: 90;
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    #sidebar-overlay.visible {
+      opacity: 1;
+    }
+
     /* ── Responsive ─────────────────────────────────────────────── */
+
+    /* ---- Tablet + Mobile: sidebar becomes a drawer ---- */
     @media (max-width: 900px) {
-      #sidebar { display: none; }
+      #ham-btn { display: flex; }
+      #sidebar-overlay { display: block; }
+
+      /* sidebar slides off-screen by default */
+      #sidebar {
+        transform: translateX(-100%);
+        transition: transform .28s cubic-bezier(.4,0,.2,1),
+                    box-shadow .28s;
+        box-shadow: none;
+      }
+      #sidebar.drawer-open {
+        transform: translateX(0);
+        box-shadow: 6px 0 32px rgba(0,0,0,.35);
+      }
+
       #main { margin-left: 0; }
-      #sidebar-scroll { overflow-y: visible; }
-      #content { padding: 20px 18px 60px; }
-      .error-grid { grid-template-columns: 1fr; }
+
+      #topbar {
+        padding: 0 16px 0 12px;
+        height: 56px;
+      }
+      #topbar .doc-title {
+        font-size: 13.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 220px;
+      }
+
+      #content {
+        padding: 24px 20px 64px;
+        max-width: 100%;
+      }
+
+      .cover {
+        padding: 28px 24px;
+        margin-bottom: 20px;
+      }
+      .cover h1 { font-size: 20px; }
+      .cover .sub { font-size: 13px; }
+      .cover-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 18px;
+      }
+
+      .error-grid { grid-template-columns: 1fr 1fr; }
       .toc { columns: 1; }
-      .cover-meta { grid-template-columns: 1fr 1fr; }
+
+      .storage-tag {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      h2.sec { font-size: 18px; }
+      h3.sub { font-size: 14px; }
+
+      footer {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+      }
+    }
+
+    /* ---- Mobile only: < 600px ---- */
+    @media (max-width: 600px) {
+      #topbar .doc-title {
+        font-size: 12.5px;
+        max-width: 150px;
+      }
+      #topbar .badge { display: none; }
+
+      #content { padding: 16px 14px 56px; }
+
+      .cover {
+        padding: 22px 18px;
+        border-radius: 6px;
+      }
+      .cover h1 { font-size: 17px; line-height: 1.3; }
+      .cover .sub { font-size: 12px; }
+      .cover-meta {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+      }
+      .cover-label { font-size: 10.5px; }
+
+      .error-grid { grid-template-columns: 1fr; }
+
+      table { font-size: 12px; }
+      thead th { padding: 8px 10px; font-size: 11px; }
+      tbody td { padding: 7px 10px; }
+
+      h2.sec { font-size: 16px; }
+      h3.sub { font-size: 13.5px; }
+      h4 { font-size: 12px; }
+
+      .toc { padding: 14px 16px; }
+      .toc ol { font-size: 12px; }
+
+      pre { font-size: 11.5px; padding: 14px 14px; }
+
+      .info-grid dt, .info-grid dd { font-size: 12px; padding: 8px 12px; }
+
+      .lang-sw button { padding: 4px 10px; font-size: 11px; }
     }
 
     @media print {
@@ -752,6 +882,13 @@
 
   <!-- Top bar -->
   <div id="topbar">
+    <button id="ham-btn" aria-label="Menu" onclick="toggleSidebar()">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="4"  width="22" height="2.2" rx="1.1" fill="#003DA5"/>
+        <rect y="10" width="22" height="2.2" rx="1.1" fill="#003DA5"/>
+        <rect y="16" width="22" height="2.2" rx="1.1" fill="#003DA5"/>
+      </svg>
+    </button>
     <span class="doc-title" data-i18n="topbar.title">Документация сервиса интеграции ЗУП</span>
     <div style="display:flex;align-items:center;">
       <span class="badge" data-i18n="topbar.badge">⚠ Проектная спецификация</span>
@@ -1963,6 +2100,47 @@ function setLang(lang) {
   const saved = localStorage.getItem('lang');
   if (saved === 'en') { setTimeout(() => setLang('en'), 0); }
 })();
+
+// ── Sidebar drawer (mobile/tablet) ────────────────────────────────
+function toggleSidebar() {
+  const sidebar  = document.getElementById('sidebar');
+  const overlay  = document.getElementById('sidebar-overlay');
+  const isOpen   = sidebar.classList.contains('drawer-open');
+  if (isOpen) {
+    closeSidebar();
+  } else {
+    sidebar.classList.add('drawer-open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('drawer-open');
+  document.getElementById('sidebar-overlay').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+// Close sidebar when any nav link is clicked on mobile
+document.querySelectorAll('#sidebar nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 900) closeSidebar();
+  });
+});
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeSidebar();
+});
+
+// Re-open sidebar on resize if desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    document.getElementById('sidebar').classList.remove('drawer-open');
+    document.getElementById('sidebar-overlay').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+});
 </script>
 
 </body>
